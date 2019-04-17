@@ -1,0 +1,78 @@
+ 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Démonstration Ajax</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>  
+    <form name="login">
+        <span>Nom d'utilisateur: </span><input type="text" id="username" value=""/>
+        <br/>
+        <span>Mot de passe: </span><input type="password" id="pswd" />
+        <input type="button" id="send" value="Login" />
+    </form>
+
+    <script>
+        $( document ).ready(function() {
+            $('#send').click(validateLogin);
+        });
+
+        /**
+         * Call-back lorsqu'on clique sur le bouton Login
+         */
+        function validateLogin(event){
+            // Prevent form submission
+            if (event)
+                event.preventDefault();
+            // Le username
+            var user = $('#username').val();
+            // Le mot de passe
+            var pswd = $('#pswd').val();
+
+            if (user.length == 0){
+                $( "#username" ).focus(); // Mettre le focus sur le champ username
+                // Afficher l’erreur, ne pas continuer
+                return;
+            }
+
+            if (pswd.length == 0){
+                $( "#pswd" ).focus(); // Mettre le focus sur le champ mot de passe
+                // Afficher l’erreur, ne pas continuer
+                return;
+            }
+
+            // Si on arrive ici, c'est que c'est bon
+            $.ajax({
+    	            method: 'POST',
+    	            url: 'checklogin.php',
+    	            data: {'username': user, 'password': pswd},
+    	            dataType: 'json',
+                    success: function (data) {
+                        switch (data.ReturnCode)
+                        {
+                            case 1:
+                            break;
+                            case 0:
+                                alert(data.Message);
+                            break;
+                   		}
+                    }, // #end success
+                    error: function (jqXHR) {
+   		                msg = "Une erreur est survenue. Error : "
+               	        switch(jqXHR.status){
+                 	        case 200 : 
+                                msg = msg + jqXHR.status + " Le json retourné est invalide.";
+                                break;
+		                    case 404 : 
+                                msg = msg + jqXHR.status + " La page checklogin.php est manquante.";
+		                        break;
+            	        } // #end switch
+		                alert(msg);
+                    } // #end error
+            });
+        }
+    </script>    
+</body>    
+</html>
