@@ -1,0 +1,1 @@
+{"mockup":{"controls":{"control":[{"ID":"1","h":"29","measuredH":"29","measuredW":"278","properties":{"bold":"false","selectedIndex":"-1","text":"A propos, Contact, Avis, Connexion"},"typeID":"MenuBar","w":"744","x":"207","y":"274","zOrder":"0"}]},"measuredH":"303","measuredW":"951","mockupH":"29","mockupW":"744","version":"1.0"}}
