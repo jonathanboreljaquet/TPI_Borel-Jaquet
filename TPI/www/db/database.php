@@ -2,7 +2,7 @@
 /**
  * @remark Mettre le bon chemin d'accès à votre fichier contenant les constantes
  */
-require_once $_SERVER['DOCUMENT_ROOT'].'/TPI/www/config/conparam.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/config/conparam.php';
 
 /**
  * @brief	Helper class encapsulating

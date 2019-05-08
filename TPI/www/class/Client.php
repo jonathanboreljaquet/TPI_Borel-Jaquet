@@ -6,10 +6,10 @@
  *          Exemple d'utilisation 1
  *          $c = new Client();
  *          $c->id_client = "2";
- *          $c->nom = "Coptère";
- *          $c->prenom = "Ellie";
+ *          $c->firstName = "Coptère";
+ *          $c->secondName = "Ellie";
  * 			$c->email = "elli.coptere@gmail.com";
- * 			$c->telephone = "077 421 34 20";
+ * 			$c->phoneNumber = "077 421 34 20";
  * 
  * 
  *          Exemple d'utilisation 2
@@ -20,18 +20,18 @@ class Client
 	/**
 	 * @brief	Le Constructor appelé au moment de la création de l'objet ex: new Client();
 	 * @param InId_client	L'identifant du client. (Optionel) Defaut 0
-	 * @param InNom			Le nom du client. (Optionel) Defaut ""
-	 * @param InPrenom	    Le prenom du client. (Optionel) Defaut ""
+	 * @param InFirstName   Le nom du client. (Optionel) Defaut ""
+	 * @param InSecondName	Le prenom du client. (Optionel) Defaut ""
 	 * @param InEmail	    L'email du client. (Optionel) Defaut ""
-	 * @param InTelephone	Le numéro de téléphone du client. (Optionel) Defaut ""
+	 * @param InPhoneNumber	Le numéro de téléphone du client. (Optionel) Defaut ""
 	  */
-	public function __construct($InId_client = 0, $InNom = "", $InPrenom = "", $InEmail = "", $InTelephone = "")
+	public function __construct($InId_client = 0, $InFirstName = "", $InSecondName = "", $InEmail = "", $InPhoneNumber = "")
 	{
 		$this->id_client = $InId_client;
-		$this->nom = $InNom;
-		$this->prenom = $InPrenom;
+		$this->firstName = $InFirstName;
+		$this->secondName = $InSecondName;
 		$this->email = $InEmail;
-		$this->telephone = $InTelephone;
+		$this->phoneNumber = $InPhoneNumber;
 	}
 	/**
 	 * @var int L'identifant du client
@@ -40,11 +40,11 @@ class Client
 	/**
 	 * @var string Le nom du client
 	 */
-	public $nom;
+	public $firstName;
 	/**
 	 * @var string Le prenom du client
 	 */
-	public $prenom;
+	public $secondName;
 	/**
 	 * @var string L'email du client
 	 */
@@ -52,5 +52,5 @@ class Client
 	/**
 	 * @var string Le numéro de téléphone du client
 	 */
-	public $telephone;
+	public $phoneNumber;
 }

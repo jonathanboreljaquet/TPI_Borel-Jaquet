@@ -7,7 +7,7 @@
  * @brief Connection constants
  */
 define('EDB_DBTYPE', "mysql");
-define('EDB_DBNAME', "bdsimple3");
+define('EDB_DBNAME', "bj_tpi_bd");
 define('EDB_HOST', "127.0.0.1");
 define('EDB_PORT', "3306");
 define('EDB_USER', "root");
