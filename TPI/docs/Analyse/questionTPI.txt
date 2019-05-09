@@ -1,0 +1,50 @@
+Validation des avis
+est_valide veut dire oui ou non, possible de faire (en attente, oui, non) ? int 2
+
+le changement de statut d'une demande par l'admin ce fait à quel moment dans l'application ?
+lors de la planification d'un rendez-vous ?
+ou directement dans la liste des demandes (ouverte / en cours / traitée / refusée) ?
+Dans le calendrier
+
+
+Langue du code ? francais ou anglais ?
+langue de mes manager exemple : DemandeManager ou RequestManager
+
+Envoie de mail ?
+oui
+
+-----------------------
+
+Comment parler du réparateur dans la documentation ?
+utilisateur non-connecté ou tout simplement réparateur
+rep : Préciser dans l'introduction que c'est la même chose
+DONE
+		(doc)"Afficher les statistique" est une fonctionnalité ? ( préciser l'affichage d'élement)
+		rep : oui, tout les critères de l'énoncé sont des fontionnalité.
+
+Modification de la page "A propos"
+Modfication d'un champ à la fois ou de tout les champs.
+rep : tous
+DONE
+
+Delete ou masquer un avis ?
+rep : delete
+
+Nom des pages en anglais ou francais ?
+rep : anglais
+
+Objet ref BDD ou ref anglais ?
+rep : anglais
+
+idRéparateur pour l'avis toujours à 1 ? ou selection d'un réparateur avant de publier l'avis ?
+rep : oui
+DONE
+
+Besoin de faire un bindParam sur un objet date dans la fonction ?
+rep :
+DONE
+
+caractère spécial donne leur code en base de données
+DONE
+
+-----------

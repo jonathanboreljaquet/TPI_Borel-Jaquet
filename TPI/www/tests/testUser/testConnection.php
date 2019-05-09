@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/manager/UserManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/inc.all.php';
 
 echo "Test de connexion réussi.<br>";
 if(UserManager::Connection("infobobo","qwert")){

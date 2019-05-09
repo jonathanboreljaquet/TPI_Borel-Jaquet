@@ -1,27 +1,26 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/db/database.php';
 class UserManager
 {
     public static function Connection($pseudo, $pwd)
     {
-        $sql = "SELECT mdp FROM reparateur where pseudo=:pseudo";
+        $sql = "SELECT mdp FROM reparateur where pseudo=:pseudo and mdp=:mdp";
         $salt = "TPIBJ";
+        $passwordSha1 = sha1($salt . $pwd);
         try {
             $stmt = EDatabase::prepare($sql);
             $stmt->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+            $stmt->bindParam(':mdp', $passwordSha1, PDO::PARAM_STR);
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $passwordSha1 = sha1($salt . $pwd);
-            if ($result==null){
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result == null) {
                 return FALSE;
             }
-            if ($passwordSha1 == $result[0]["mdp"]) {
+            if ($passwordSha1 == $result["mdp"]) {
                 return TRUE;
             } else {
                 return FALSE;
             }
         } catch (Exception $e) {
-            echo "PDOException Error: " . $e->getMessage();
             return FALSE;
         }
     }

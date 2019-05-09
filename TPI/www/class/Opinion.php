@@ -1,7 +1,7 @@
 <?php
 /**
  * @brief	Objet Opinion
- * @remark  Cet objet est utilisé comme conteneur en référence avec la table Avis
+ * @remark  Cet objet est utilisé comme conteneur en référence avec la table avis
  * 
  *          Exemple d'utilisation 1
  *          $o = new Opinion();

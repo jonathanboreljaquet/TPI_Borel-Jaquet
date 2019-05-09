@@ -1,7 +1,7 @@
 <?php
 /**
  * @brief	Objet Client
- * @remark  Cet objet est utilisé comme conteneur en référence avec la table Clients
+ * @remark  Cet objet est utilisé comme conteneur en référence avec la table clients
  * 
  *          Exemple d'utilisation 1
  *          $c = new Client();
