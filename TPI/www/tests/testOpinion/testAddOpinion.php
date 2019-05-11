@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 //Test d'ajout d'opinion dans la base, texte simple.
 echo "Test d'insert réspecant les normes.<br>";

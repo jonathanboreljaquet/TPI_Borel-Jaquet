@@ -48,3 +48,14 @@ caractère spécial donne leur code en base de données
 DONE
 
 -----------
+
+
+UPDATE dans la base impossible sans key,
+Modification des préférence MySql ou ajout d'une clef d'authentification ?
+rep :
+
+INSERT ENUM, bonne pratique ?
+rep :
+
+Toujours utiliser des objets, même pour les fonctions d'insert,update, ect
+rep :

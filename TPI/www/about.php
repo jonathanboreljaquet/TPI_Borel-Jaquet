@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
-if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
+if (isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] == true) {
     $isLogged = true;
 } else {
     $isLogged = false;
@@ -29,7 +29,7 @@ $about = AboutManager::GetAboutInformation();
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-10 border justify-content-center border-primary rounded mt-4 p-4" style="background-color: #E0E0E0;" >
+            <div class="col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4" style="background-color: #E0E0E0;">
                 <h1>À propos de moi</h1>
 
                 <table>
@@ -67,13 +67,9 @@ $about = AboutManager::GetAboutInformation();
                     if ($isLogged == true) {
                         ?>
                         <tr>
-                            <form action="aboutUpdate.php" method="POST">
-                                <input type="hidden" name="aboutPhoneNumber" value="<?= $about->phoneNumber ?>">
-                                <input type="hidden" name="aboutEmail" value="<?= $about->email ?>">
-                                <input type="hidden" name="aboutPrice" value="<?= $about->price ?>">
-                                <input type="hidden" name="aboutDescription" value="<?= $about->description ?>">
-                                <td><button type="submit" name="btnUpdateAbout" class="btn btn-primary">Modifier</button></td>
-                            </form>
+                            <td>
+                                <a class="btn btn-primary" href="aboutUpdate.php" role="button">Modifier</a>
+                            </td>
                         </tr>
                     <?php
                 }

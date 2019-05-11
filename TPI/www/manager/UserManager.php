@@ -7,7 +7,7 @@ class UserManager
         $salt = "TPIBJ";
         $passwordSha1 = sha1($salt . $pwd);
         try {
-            $stmt = EDatabase::prepare($sql);
+            $stmt = Database::prepare($sql);
             $stmt->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
             $stmt->bindParam(':mdp', $passwordSha1, PDO::PARAM_STR);
             $stmt->execute();

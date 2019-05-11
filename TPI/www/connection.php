@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 if (isset($_POST["btnConnection"])) {
     if (isset($_POST["pseudoLogin"]) && isset($_POST["pwdLogin"])) {
@@ -37,7 +37,7 @@ if (isset($_POST["btnConnection"])) {
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-3 border justify-content-center border-primary rounded mt-4 p-4"style="background-color: #E0E0E0;">
+            <div class="col-md-4 col-lg-4 border justify-content-center border-primary rounded mt-4 p-4"style="background-color: #E0E0E0;">
                 <div class="row justify-content-center">
                     <form action="#" method="post" style="width:100%;">
                         <h1 class="text-center" style="border-bottom:#007bff solid 1px;">Connexion</h1>

@@ -2,7 +2,7 @@
 /**
  * @remark Mettre le bon chemin d'accès à votre fichier contenant les constantes
  */
-require_once $_SERVER['DOCUMENT_ROOT'].'/config/conparam.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/www/config/conparam.php';
 
 /**
  * @brief	Helper class encapsulating
@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/config/conparam.php';
  * @author 	dominique.aigroz@kadeo.net
  * @remark	
  */
-class EDatabase {
+class Database {
 	private static $objInstance;
 	/**
 	 * @brief	Class Constructor - Create a new database connection if one doesn't exist

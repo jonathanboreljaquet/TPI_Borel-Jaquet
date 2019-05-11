@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 //Test de récuparation d'un objet About créé en référence avec la base de données.
 echo "Test de selection du seul objet About ";
