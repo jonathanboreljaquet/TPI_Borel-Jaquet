@@ -3,7 +3,8 @@ class OpinionManager
 {
     public static function AddOpinion($comment)
     {
-        $sql = "INSERT INTO `bj_tpi_bd`.`avis` (`date`, `comment`, `est_valide`, `id_reparateur`) VALUES (:date, :comment, '0', '1')";
+        $sql = "INSERT INTO `bj_tpi_bd`.`avis` (`date`, `comment`, `est_valide`, `id_reparateur`) 
+                VALUES (:date, :comment, '0', '1')";
         try {
             if ($comment == "") {
                 throw new Exception('aucun commentaire ');
@@ -20,7 +21,9 @@ class OpinionManager
     }
     public static function GetOpinionValidate()
     {
-        $sql = "SELECT * FROM bj_tpi_bd.avis where est_valide = 1 order by date";
+        $sql = "SELECT id_avis,date,comment,est_valide,id_reparateur
+                FROM bj_tpi_bd.avis 
+                WHERE est_valide = 1 order by date DESC";
         $arrOpinion = array();
         try {
             $stmt = Database::prepare($sql);
@@ -42,7 +45,9 @@ class OpinionManager
     }
     public static function GetOpinionNotValidate()
     {
-        $sql = "SELECT * FROM bj_tpi_bd.avis where est_valide = 0 order by date";
+        $sql = "SELECT id_avis,date,comment,est_valide,id_reparateur 
+                FROM bj_tpi_bd.avis 
+                WHERE est_valide = 0 order by date";
         $arrOpinion = array();
         try {
             $stmt = Database::prepare($sql);
@@ -64,7 +69,9 @@ class OpinionManager
     }
     public static function UpdateOpinionStatutById($id_opinion)
     {
-        $sql = "UPDATE `bj_tpi_bd`.`avis` SET `est_valide` = '1' WHERE (`id_avis` = :id_opinion)";
+        $sql = "UPDATE `bj_tpi_bd`.`avis` 
+                SET `est_valide` = '1' 
+                WHERE (`id_avis` = :id_opinion)";
         try {
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':id_opinion', $id_opinion, PDO::PARAM_STR);
@@ -76,7 +83,9 @@ class OpinionManager
     }
     public static function DeleteOpinionById($id_opinion)
     {
-        $sql = "DELETE FROM `bj_tpi_bd`.`avis` WHERE (`id_avis` = :id_opinion);";
+        $sql = "DELETE 
+                FROM `bj_tpi_bd`.`avis` 
+                WHERE (`id_avis` = :id_opinion);";
         try {
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':id_opinion', $id_opinion, PDO::PARAM_STR);

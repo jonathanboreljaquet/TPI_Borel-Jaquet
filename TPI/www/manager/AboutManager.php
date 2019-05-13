@@ -3,7 +3,8 @@ class AboutManager
 {
     public static function GetAboutInformation()
     {
-        $sql = "SELECT * FROM bj_tpi_bd.infos_dynamiques;";
+        $sql = "SELECT telephone,email,tarif,description 
+                FROM bj_tpi_bd.infos_dynamiques;";
         $arrAbout = array();
         try {
             $stmt = Database::prepare($sql);
@@ -22,7 +23,9 @@ class AboutManager
     }
     public static function UpdateAboutInformation($phoneNumber, $email, $price, $description)
     {
-        $sql = "UPDATE `bj_tpi_bd`.`infos_dynamiques` SET `telephone` =:phoneNumber, `email` = :email, `tarif` = :price, `description` = :description";
+        $sql = "UPDATE `bj_tpi_bd`.`infos_dynamiques` 
+                SET `telephone` =:phoneNumber, `email` = :email, `tarif` = :price, `description` = :description 
+                WHERE id_infos_dynamiques=1";
         try {
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':phoneNumber', $phoneNumber, PDO::PARAM_STR);

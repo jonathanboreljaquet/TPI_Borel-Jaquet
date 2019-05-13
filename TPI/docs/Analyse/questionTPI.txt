@@ -59,3 +59,5 @@ rep :
 
 Toujours utiliser des objets, même pour les fonctions d'insert,update, ect
 rep :
+
+Constante fichier inc.all.php bien ou pas bien ?

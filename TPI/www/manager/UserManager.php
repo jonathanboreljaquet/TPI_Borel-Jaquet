@@ -3,7 +3,9 @@ class UserManager
 {
     public static function Connection($pseudo, $pwd)
     {
-        $sql = "SELECT mdp FROM reparateur where pseudo=:pseudo and mdp=:mdp";
+        $sql = "SELECT mdp 
+                FROM reparateur 
+                WHERE pseudo=:pseudo and mdp=:mdp";
         $salt = "TPIBJ";
         $passwordSha1 = sha1($salt . $pwd);
         try {

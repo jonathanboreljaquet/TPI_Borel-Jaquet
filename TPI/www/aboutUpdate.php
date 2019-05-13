@@ -9,7 +9,7 @@ if (isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] == true) {
 }
 
 
-$about = AboutManager::GetAboutInformation();
+
 
 if (isset($_POST["btnUpdateAbout"])) {
     $newPhoneNumber = filter_input(INPUT_POST, "newAboutPhoneNumber", FILTER_SANITIZE_STRING);
@@ -24,6 +24,7 @@ if (isset($_POST["btnUpdateAbout"])) {
         echo "<div class='alert alert-danger mb-0' role='alert'>Problème lors du changement d'informations</div>";
     }
 }
+$about = AboutManager::GetAboutInformation();
 ?>
 <!doctype html>
 <html lang="fr">
