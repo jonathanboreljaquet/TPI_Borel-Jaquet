@@ -66,7 +66,7 @@ $arrRequest = RequestManager::GetAllRequest();
                                             <td><?= $arrRequestClient[CLIENT]->secondName ?></td>
                                             <td><?= $arrRequestClient[CLIENT]->email ?></td>
                                             <td><?= $arrRequestClient[CLIENT]->phoneNumber ?></td>
-                                            <td style="color:<?= StyleManager::ColorStatus($arrRequestClient[REQUEST]->status) ?>;"><?= $arrayConstStatus[$arrRequestClient[REQUEST]->status] ?></td>
+                                            <td style="color:<?= StyleManager::ColorStatus($arrRequestClient[REQUEST]->status) ?>;"><?= $arrConstStatus[$arrRequestClient[REQUEST]->status] ?></td>
 
                                         </tr>
                                         <tr>
@@ -80,7 +80,6 @@ $arrRequest = RequestManager::GetAllRequest();
                                                     </button>
                                                     <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_REFUSED ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>">Refusée</a>
-                                                        <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_IN_PROGRESS ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>">En cours</a>
                                                         <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_PROCESSED ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>">Traitée</a>
                                                     </div>
                                                 </div>

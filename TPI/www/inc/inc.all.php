@@ -18,6 +18,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/AboutManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/ClientManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/RequestManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/StyleManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/EventManager.php';
 
 //Constante
 const CLIENT = 0;
@@ -35,10 +36,15 @@ const PAGE_CONNECTION = "connection.php";
 const PAGE_ADMIN_ABOUT = "adminOpinion.php";
 const PAGE_ADMIN_CONTACT = "adminContact.php";
 
+const EVENT_TYPE_GIVE = "REDD";
+const EVENT_TYPE_RETURN = "RECUP";
 
-$arrayConstStatus = array(
+
+$arrConstStatus = array(
     STATUS_OPEN => "Ouverte",
     STATUS_IN_PROGRESS => "En cours",
     STATUS_PROCESSED => "Traitée",
     STATUS_REFUSED => "Refusée"
 );
+
+
