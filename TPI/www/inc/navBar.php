@@ -21,26 +21,30 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
             </li>
             <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_OPINION)) ? "active" : ""; ?>">
                 <a class="nav-link" href=<?= PAGE_OPINION ?>>Avis</a>
-            <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_CONNECTION)) ? "active" : ""; ?>">
-                <?= ($isLogged == false) ? '<a class="nav-link" href="'.PAGE_CONNECTION.'">Connexion</a>' : '<a class="nav-link" href="disconnection.php">Deconnexion</a>'; ?>
             </li>
-            <?php
-            if ($isLogged == true) {
-                ?>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Administration
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Calendrier</a>
-                        <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CONTACT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CONTACT ?>>Demande</a>
-                        <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_ABOUT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_ABOUT ?>>Avis</a>
-                        <a class="dropdown-item" href="#">Statistique</a>
+            <li>
+                <?php
+                if ($isLogged == true) {
+                    ?>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administration
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Calendrier</a>
+                            <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CONTACT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CONTACT ?>>Demande</a>
+                            <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_ABOUT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_ABOUT ?>>Avis</a>
+                            <a class="dropdown-item" href="#">Statistique</a>
+                        </div>
                     </div>
-                </div>
-            <?php
-        }
-        ?>
+                <?php
+            }
+            ?>
+            </li>
+            <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_CONNECTION)) ? "active" : ""; ?>">
+                <?= ($isLogged == false) ? '<a class="nav-link" href="' . PAGE_CONNECTION . '">Connexion</a>' : '<a class="nav-link" href="disconnection.php">Deconnexion</a>'; ?>
+            </li>
+
         </ul>
     </div>
 </nav>
