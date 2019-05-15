@@ -68,3 +68,9 @@ Php mailer fonctionne pas
 rep :
 Où placer les dossier d'API dans l'arborescence et vue dans un dossier ?
 rep :
+Calendrier ajout événement date début date fin plus pratique, possible ?
+rep :
+table statique month pour pouvoir afficher un record 0 lorsque qu'un mois n'a pas de réparation ?
+rep :
+détail des classes, ajouter des $ avant variable ?
+rep :

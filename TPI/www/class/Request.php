@@ -43,7 +43,7 @@ class Request
      */
     public $description;
     /**
-     * @var bool  Le statut de la demande
+     * @var string  Le statut de la demande
      */
     public $status;
 }

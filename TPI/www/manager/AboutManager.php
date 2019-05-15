@@ -3,7 +3,7 @@ class AboutManager
 {
     public static function GetAboutInformation()
     {
-        $sql = "SELECT telephone,email,tarif,description 
+        $sql = "SELECT id_infos_dynamiques,telephone,email,tarif,description 
                 FROM bj_tpi_bd.infos_dynamiques;";
         $arrAbout = array();
         try {
@@ -11,6 +11,7 @@ class AboutManager
             $stmt->execute();
             $about = $stmt->fetch(PDO::FETCH_ASSOC);
             $a = new About();
+            $a->id_about = intval($about["id_infos_dynamiques"]);
             $a->phoneNumber = $about["telephone"];
             $a->email = $about["email"];
             $a->price = $about["tarif"];

@@ -23,7 +23,8 @@ class OpinionManager
     {
         $sql = "SELECT id_avis,date,comment,est_valide,id_reparateur
                 FROM bj_tpi_bd.avis 
-                WHERE est_valide = 1 order by date DESC";
+                WHERE est_valide = 1 
+                ORDER BY date DESC";
         $arrOpinion = array();
         try {
             $stmt = Database::prepare($sql);
@@ -31,11 +32,11 @@ class OpinionManager
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $opinion) {
                 $o = new Opinion();
-                $o->id_opinion = $opinion["id_avis"];
+                $o->id_opinion = intval($opinion["id_avis"]);
                 $o->date = $opinion["date"];
                 $o->comment = $opinion["comment"];
-                $o->is_validate = $opinion["est_valide"];
-                $o->id_repairer = $opinion["id_reparateur"];
+                $o->is_validate = boolval($opinion["est_valide"]);
+                $o->id_repairer = intval($opinion["id_reparateur"]);
                 array_push($arrOpinion, $o);
             }
             return $arrOpinion;
@@ -47,7 +48,8 @@ class OpinionManager
     {
         $sql = "SELECT id_avis,date,comment,est_valide,id_reparateur 
                 FROM bj_tpi_bd.avis 
-                WHERE est_valide = 0 order by date";
+                WHERE est_valide = 0 
+                ORDER BY date ASC";
         $arrOpinion = array();
         try {
             $stmt = Database::prepare($sql);
@@ -55,11 +57,11 @@ class OpinionManager
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $opinion) {
                 $o = new Opinion();
-                $o->id_opinion = $opinion["id_avis"];
+                $o->id_opinion =  intval($opinion["id_avis"]);
                 $o->date = $opinion["date"];
                 $o->comment = $opinion["comment"];
-                $o->is_validate = $opinion["est_valide"];
-                $o->id_repairer = $opinion["id_reparateur"];
+                $o->is_validate = boolval($opinion["est_valide"]);
+                $o->id_repairer = intval($opinion["id_reparateur"]);
                 array_push($arrOpinion, $o);
             }
             return $arrOpinion;

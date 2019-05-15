@@ -29,7 +29,7 @@ class RequestManager
         $sql = "SELECT clients.id_client,demandes.id_demande, nom, prenom, email,telephone,description,statut
                 FROM clients, demandes
                 WHERE clients.id_client = demandes.id_client 
-                ORDER BY statut";
+                ORDER BY statut ASC";
         $arrRequest = array();
         try {
             $stmt = Database::prepare($sql);
@@ -38,7 +38,7 @@ class RequestManager
             foreach ($result as $requestClient) {
                 $arrClientRequest = array();
                 $c = new Client();
-                $c->id_client = $requestClient["id_client"];
+                $c->id_client = intval($requestClient["id_client"]);
                 $c->firstName = $requestClient["nom"];
                 $c->secondName = $requestClient["prenom"];
                 $c->email = $requestClient["email"];
@@ -46,8 +46,8 @@ class RequestManager
                 array_push($arrClientRequest, $c);
 
                 $r = new Request();
-                $r->id_request = $requestClient["id_demande"];
-                $r->id_client = $requestClient["id_client"];
+                $r->id_request = intval($requestClient["id_demande"]);
+                $r->id_client = intval($requestClient["id_client"]);
                 $r->description = $requestClient["description"];
                 $r->status = $requestClient["statut"];
                 array_push($arrClientRequest, $r);
@@ -87,7 +87,7 @@ class RequestManager
             foreach ($result as $requestClient) {
                 $arrClientRequest = array();
                 $c = new Client();
-                $c->id_client = $requestClient["id_client"];
+                $c->id_client = intval($requestClient["id_client"]);
                 $c->firstName = $requestClient["nom"];
                 $c->secondName = $requestClient["prenom"];
                 $c->email = $requestClient["email"];
@@ -95,8 +95,8 @@ class RequestManager
                 array_push($arrClientRequest, $c);
 
                 $r = new Request();
-                $r->id_request = $requestClient["id_demande"];
-                $r->id_client = $requestClient["id_client"];
+                $r->id_request = intval($requestClient["id_demande"]);
+                $r->id_client = intval($requestClient["id_client"]);
                 $r->description = $requestClient["description"];
                 $r->status = $requestClient["statut"];
                 array_push($arrClientRequest, $r);
@@ -107,4 +107,22 @@ class RequestManager
             return FALSE;
         }
     }
+    public static  function GetProcessedRequestOrderByMonthAndYear($year)
+    {
+        $sql = "SELECT MONTH( e.date ) AS month, YEAR( e.date ) AS year, COUNT( * ) as nbRequest
+                FROM bj_tpi_bd.demandes as d, bj_tpi_bd.evenement as e
+                WHERE d.id_demande = e.id_demande and d.statut ='TRAITEE' and YEAR( e.date ) =:year
+                GROUP BY year, month
+                ORDER BY month ASC";
+        try {
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);           
+            return $result;
+        } catch (Exception $e) {
+            return FALSE;
+        }
+    }
+
 }

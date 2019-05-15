@@ -1,6 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
-print_r($_POST);
 if (isset($_POST["saveEvent"])) {
     if ($_POST["id_requestSelected"] != null && $_POST["eventDate"] != null) {
         $id_request = filter_input(INPUT_POST, "id_requestSelected", FILTER_SANITIZE_STRING);
@@ -22,7 +21,7 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--    Bootstrapp  4.0.0 et Fontawesome 5.0.6 -->
     <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
@@ -36,7 +35,7 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
     <script src='fullcalendar-4.1.0/packages/daygrid/main.js'></script>
     <script src='fullcalendar-4.1.0/packages/timegrid/main.js'></script>
     <script src='fullcalendar-4.1.0/packages/list/main.js'></script>
-    <!-- Plugin pour séléctionsner une date dans le calendrier et pour mettre le calendrier en francais -->
+    <!-- Plugin pour séléctionner une date dans le calendrier et pour mettre le calendrier en francais -->
     <script src='fullcalendar-4.1.0/packages/interaction/main.js'></script>
     <script src='fullcalendar-4.1.0/packages/core/locales/fr-ch.js'></script>
 
@@ -56,6 +55,10 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
                 <div class="form-group">
                     <label for="eventDate">Date</label>
                     <input name="eventDate" type="text" class="form-control" id="eventDate" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate2">Date 2</label>
+                    <input name="eventDate2" type="text" class="form-control" id="eventDate2" readonly>
                 </div>
                 <div class="form-group">
                     <select name="eventHour" class="custom-select">
@@ -146,10 +149,18 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
         selectable: true, // permet de chosir un jour
         locale: 'fr-ch', // la langue
         dateClick: function(info) { // function a chaque click de date
-            alert('Date: ' + info.dateStr);
-            //  alert('Resource ID: ' + info.resource.id);
-            document.getElementById("eventDate").value = info.dateStr;
+            var today = new Date;
+            var selectDay = new Date(info.dateStr);
+            if (selectDay.getDay() < today.getDay()) {
+                alert("Impossible de choisir une date plus petite qu'aujoud'hui");
+            } else {
+
+                document.getElementById("eventDate").value = info.dateStr;
+            }
         },
+
+
+
         events: data
 
     });

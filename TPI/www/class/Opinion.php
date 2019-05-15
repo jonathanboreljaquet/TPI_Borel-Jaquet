@@ -5,22 +5,22 @@
  * 
  *          Exemple d'utilisation 1
  *          $o = new Opinion();
- *          $o->id_opinion = "2";
+ *          $o->id_opinion = 2;
  *          $o->date = "27/03/19";
  *          $o->comment = "Super réparation de Monsieur Borel-Jaquet, au top !";
- * 			$o->is_validate = "FALSE";
- * 			$o->id_repairer = "1";
+ * 			$o->is_validate = FALSE;
+ * 			$o->id_repairer = 1;
  * 
  * 
  *          Exemple d'utilisation 2
- *          $o = new Opinion("2", "27/03/19", "Super réparation de Monsieur Borel-Jaquet, au top !,FALSE,1);
+ *          $o = new Opinion(2, "27/03/19", "Super réparation de Monsieur Borel-Jaquet, au top !",FALSE,1);
  */
 class Opinion
 {
 	/**
 	 * @brief	Le Constructor appelé au moment de la création de l'objet ex: new Opinion();
 	 * @param InId_opinion			L'identifant de l'avis. (Optionel) Defaut 0
-	 * @param InDate				La date de l'avis. (Optionel) Defaut null
+	 * @param InDate				La date de l'avis. (Optionel) Defaut ""
 	 * @param InComment	    		Le commentaire soumit par le client. (Optionel) Defaut ""
 	 * @param InIs_validate	    	Variable indiquant si l'avis à été validé ou non. (Optionel) Defaut FALSE
 	 * @param InId_repairer			L'identifiant du réparateur. (Optionel) Defaut 0
@@ -38,7 +38,7 @@ class Opinion
 	 */
 	public $id_opinion;
 	/**
-	 * @var DateTime La date de l'avis
+	 * @var string La date de l'avis
 	 */
 	public $date;
 	/**

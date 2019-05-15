@@ -5,7 +5,7 @@
  * 
  *          Exemple d'utilisation 1
  *          $c = new Client();
- *          $c->id_client = "2";
+ *          $c->id_client = 2;
  *          $c->firstName = "Coptère";
  *          $c->secondName = "Ellie";
  * 			$c->email = "elli.coptere@gmail.com";
@@ -13,7 +13,7 @@
  * 
  * 
  *          Exemple d'utilisation 2
- *          $c = new Client(2,"Coptère","Ellie","elli.coptere@gmail.com",077 421 34 20);
+ *          $c = new Client(2,"Coptère","Ellie","elli.coptere@gmail.com","077 421 34 20");
  */
 class Client
 {
@@ -42,7 +42,7 @@ class Client
 	 */
 	public $firstName;
 	/**
-	 * @var string Le prenom du client
+	 * @var string Le prénom du client
 	 */
 	public $secondName;
 	/**
@@ -54,3 +54,4 @@ class Client
 	 */
 	public $phoneNumber;
 }
+

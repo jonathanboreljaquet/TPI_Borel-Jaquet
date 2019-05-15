@@ -35,6 +35,7 @@ const PAGE_OPINION = "opinion.php";
 const PAGE_CONNECTION = "connection.php";
 const PAGE_ADMIN_ABOUT = "adminOpinion.php";
 const PAGE_ADMIN_CONTACT = "adminContact.php";
+const PAGE_ADMIN_STATISTIC = "adminStatistic.php";
 
 const EVENT_TYPE_GIVE = "REDD";
 const EVENT_TYPE_RETURN = "RECUP";
@@ -45,6 +46,21 @@ $arrConstStatus = array(
     STATUS_IN_PROGRESS => "En cours",
     STATUS_PROCESSED => "Traitée",
     STATUS_REFUSED => "Refusée"
+);
+
+$arrMonth = array(
+    1 => "Janvier",
+    2 => "Février",
+    3 => "Mars",
+    4 => "Avril",
+    5 => "Mai",
+    6 => "Juin",
+    7 => "Juillet",
+    8 => "Août",
+    9 => "Septembre",
+    10 => "Octobre",
+    11 => "Novembre",
+    12 => "Décembre",
 );
 
 

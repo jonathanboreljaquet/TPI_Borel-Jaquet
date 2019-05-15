@@ -34,7 +34,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                             <a class="dropdown-item" href="#">Calendrier</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CONTACT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CONTACT ?>>Demande</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_ABOUT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_ABOUT ?>>Avis</a>
-                            <a class="dropdown-item" href="#">Statistique</a>
+                            <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_STATISTIC)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_STATISTIC ?>>Statistique</a>
                         </div>
                     </div>
                 <?php
