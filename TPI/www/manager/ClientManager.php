@@ -1,6 +1,17 @@
 <?php
 class ClientManager
 {
+    /**
+     * Enregistre un client dans la base de données.
+     *
+     * @param string $firstName Le nom du client
+     * @param string $secondName Le prénom du client
+     * @param string $email L'email du client
+     * @param string $phoneNumber Le numéro de téléphone du client
+     *
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return string $last_id Retourne l'id du client précédemment créé
+     */
     public static function AddClient($firstName, $secondName, $email, $phoneNumber)
     {
         $sql = "INSERT INTO `bj_tpi_bd`.`clients` (`nom`, `prenom`, `email`, `telephone`) 

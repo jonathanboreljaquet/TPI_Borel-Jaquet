@@ -1,6 +1,13 @@
 <?php
 class AboutManager
 {
+    /**
+     * Récupère les informations personnelles du réparateur dans un objet About.
+     * 
+     * @throws bool Retourne false s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return About $a Retourne un objet About
+     */
     public static function GetAboutInformation()
     {
         $sql = "SELECT id_infos_dynamiques,telephone,email,tarif,description 
@@ -22,6 +29,18 @@ class AboutManager
             return FALSE;
         }
     }
+    /**
+     * Modifie les informations personnelles du réparateur.
+     *
+     * @param string $phoneNumber Le numéro de téléphone du réparateur
+     * @param string $email L'email du réparateur
+     * @param string $price Le tarif de la réparation
+     * @param string $description La description du réparateur
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
     public static function UpdateAboutInformation($phoneNumber, $email, $price, $description)
     {
         $sql = "UPDATE `bj_tpi_bd`.`infos_dynamiques` 

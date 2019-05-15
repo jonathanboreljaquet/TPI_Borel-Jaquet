@@ -1,7 +1,19 @@
 <?php
 class RequestManager
 {
-
+    /**
+     * Enregistre une demande de réparation et un client dans la base de données.
+     *
+     * @param string $firstName Le nom du client 
+     * @param string $secondName Le prénom du client
+     * @param string $email L'email du client
+     * @param string $phoneNumber Le numéro de téléphonme du client
+     * @param string $description La description de la demande de réparation
+     * 
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
     public static function AddRequest($firstName, $secondName, $email, $phoneNumber, $description)
     {
         $sql = "INSERT INTO `bj_tpi_bd`.`demandes` (`id_client`, `description`, `statut`) 
@@ -18,12 +30,19 @@ class RequestManager
             $stmt->bindParam(':statut', $status, PDO::PARAM_STR);
             $stmt->execute();
             $pdo->commit();
-            return true;
+            return TRUE;
         } catch (Exception $e) {
             $pdo->rollBack();
             return FALSE;
         }
     }
+    /**
+     * Récupère toutes les demandes de réparation de la base de données dans un tableau d'objet Client et Request.
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
+     */
     public static function GetAllRequest()
     {
         $sql = "SELECT clients.id_client,demandes.id_demande, nom, prenom, email,telephone,description,statut
@@ -58,6 +77,16 @@ class RequestManager
             return FALSE;
         }
     }
+    /**
+     * Modifie le statut d'une demande de réparation
+     *
+     * @param string $id_request L'id de la demande
+     * @param string $status Le nouveau statut de la demande
+     * 
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
     public static function UpdateRequestStatusById($id_request, $status)
     {
         $sql = "UPDATE `bj_tpi_bd`.`demandes` 
@@ -68,11 +97,19 @@ class RequestManager
             $stmt->bindParam(':id_request', $id_request, PDO::PARAM_STR);
             $stmt->bindParam(':status', $status, PDO::PARAM_STR);
             $stmt->execute();
-            return true;
+            return TRUE;
         } catch (Exception $e) {
             return FALSE;
         }
     }
+    /**
+     * Récupère toutes les demandes de réparation de statut "ouverte" de la base de données
+     * dans un tableau d'objet Client et Request.
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
+     */
     public static  function GetOpenRequest()
     {
         $sql = "SELECT clients.id_client,demandes.id_demande, nom, prenom, email,telephone,description,statut
@@ -107,6 +144,15 @@ class RequestManager
             return FALSE;
         }
     }
+    /**
+     * Récupère les demandes de statut "traitée" de la base de données triée par mois et par année.
+     *
+     * @param string $year L'année des demandes
+     * 
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return array $result Retourne un tableau associatif représentant le résultat de la requête SQL
+     */
     public static  function GetProcessedRequestOrderByMonthAndYear($year)
     {
         $sql = "SELECT MONTH( e.date ) AS month, YEAR( e.date ) AS year, COUNT( * ) as nbRequest
@@ -118,11 +164,10 @@ class RequestManager
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':year', $year, PDO::PARAM_INT);
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);           
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (Exception $e) {
             return FALSE;
         }
     }
-
 }

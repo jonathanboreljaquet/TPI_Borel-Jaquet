@@ -1,6 +1,16 @@
 <?php
 class UserManager
 {
+    /**
+     * Valide la connexion d'un réparateur au site web
+     * 
+     * @param string $pseudo Le pseudo du réparateur
+     * @param string $pwd Le mot de passe du réparateur
+     * 
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE si le pseudo et le mot de passe sont corrects
+     */
     public static function Connection($pseudo, $pwd)
     {
         $sql = "SELECT mdp 

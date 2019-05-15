@@ -11,7 +11,7 @@ if (isset($_GET["type"]) && isset($_GET["id_opinion"])) {
     $type = filter_input(INPUT_GET, "type", FILTER_SANITIZE_STRING);
     $id_opinion = filter_input(INPUT_GET, "id_opinion", FILTER_SANITIZE_NUMBER_INT);
     if ($type == "accept") {
-        if (OpinionManager::UpdateOpinionStatutById($id_opinion)) {
+        if (OpinionManager::ValidateOpinionById($id_opinion)) {
             echo "<div class='alert alert-success mb-0' role='alert'>Avis validé</div>";
         } else {
             echo "<div class='alert alert-success mb-0' role='alert'>Problème lors de la validation de l'avis</div>";

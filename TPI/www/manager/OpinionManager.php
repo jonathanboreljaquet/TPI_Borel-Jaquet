@@ -1,6 +1,15 @@
 <?php
 class OpinionManager
 {
+    /**
+     * Enregistre un avis non validé dans la base de données.
+     *
+     * @param string $comment Le commentaire de l'avis
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
     public static function AddOpinion($comment)
     {
         $sql = "INSERT INTO `bj_tpi_bd`.`avis` (`date`, `comment`, `est_valide`, `id_reparateur`) 
@@ -14,11 +23,18 @@ class OpinionManager
             $stmt->bindParam(':date', $date, PDO::PARAM_STR);
             $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
             $stmt->execute();
-            return true;
+            return TRUE;
         } catch (Exception $e) {
             return FALSE;
         }
     }
+    /**
+     * Récupère tous les avis validés de la base de données dans un tableau d'objet Opinion.
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion
+     */
     public static function GetOpinionValidate()
     {
         $sql = "SELECT id_avis,date,comment,est_valide,id_reparateur
@@ -44,6 +60,13 @@ class OpinionManager
             return FALSE;
         }
     }
+    /**
+     * Récupère tous les avis non validé de la base de données dans un tableau d'objet Opinion.
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion
+     */
     public static function GetOpinionNotValidate()
     {
         $sql = "SELECT id_avis,date,comment,est_valide,id_reparateur 
@@ -69,7 +92,16 @@ class OpinionManager
             return FALSE;
         }
     }
-    public static function UpdateOpinionStatutById($id_opinion)
+    /**
+     * Valide un avis dans la base de données.
+     *
+     * @param string $id_opinion L'identifiant de l'avis
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
+    public static function ValidateOpinionById($id_opinion)
     {
         $sql = "UPDATE `bj_tpi_bd`.`avis` 
                 SET `est_valide` = '1' 
@@ -78,11 +110,20 @@ class OpinionManager
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':id_opinion', $id_opinion, PDO::PARAM_STR);
             $stmt->execute();
-            return true;
+            return TRUE;
         } catch (Exception $e) {
             return FALSE;
         }
     }
+    /**
+     * Supprime un avis dans la base de données.
+     *
+     * @param string $id_opinion L'identifiant de l'avis
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
     public static function DeleteOpinionById($id_opinion)
     {
         $sql = "DELETE 
@@ -92,7 +133,7 @@ class OpinionManager
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':id_opinion', $id_opinion, PDO::PARAM_STR);
             $stmt->execute();
-            return true;
+            return TRUE;
         } catch (Exception $e) {
             return FALSE;
         }

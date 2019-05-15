@@ -74,3 +74,5 @@ table statique month pour pouvoir afficher un record 0 lorsque qu'un mois n'a pa
 rep :
 détail des classes, ajouter des $ avant variable ?
 rep :
+Return array ou return array[object] ?
+rep :

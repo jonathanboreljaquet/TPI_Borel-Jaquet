@@ -1,6 +1,18 @@
 <?php
 class EventManager
 {
+    /**
+     * Enregistre un événement et modifie le statut d'une demande dans la base de données.
+     *
+     * @param string $id_request L'identifiant de la demande
+     * @param string $dateEvent La date de l'événement
+     * @param string $typeEvent Le type d'événement
+     * @param string $hourEvent L'heure de l'événement
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE
+     */
     public static function AddEvent($id_request, $dateEvent, $typeEvent, $hourEvent)
     {
         $sql = "INSERT INTO `bj_tpi_bd`.`evenement` (`id_demande`, `date`, `type`, `horaire`, `id_reparateur`) 
@@ -16,12 +28,19 @@ class EventManager
             $stmt->bindParam(':hourEvent', $hourEvent, PDO::PARAM_STR);
             $stmt->execute();
             $pdo->commit();
-            return true;
+            return TRUE;
         } catch (Exception $e) {
             $pdo->rollBack();
             return FALSE;
         }
     }
+    /**
+     * Récupère tous les événements en format JSON destiné au calendrier JavaScript
+     *
+     * @throws bool Retourne FALSE s'il y a un problème
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return string Retourne une chaine contenant la représentation JSON des événements
+     */
     public static function GetAllEventFormatJSON()
     {
         $sql = "SELECT e.date,e.type,e.horaire,c.nom,c.prenom 
@@ -40,7 +59,7 @@ class EventManager
             foreach ($result as $event) {
                 $arrEvent = array(
                     "title" => $event["nom"] . " " . $event["prenom"] . " pour " . $arrTypeEvent[$event["type"]],
-                    "start" => $event["date"] ."T". $event["horaire"]
+                    "start" => $event["date"] . "T" . $event["horaire"]
                 );
                 array_push($arrAllEvent, $arrEvent);
             }
@@ -50,18 +69,4 @@ class EventManager
             return FALSE;
         }
     }
-
-    /*
-var data = [{
-                "title": "Conference",
-                "start": "2019-05-11",
-                "end": "2019-05-13"
-            },
-            {
-                "title": "Meeting",
-                "start": "2019-05-14T06:30"
-            },
-        ]
-
-    */
 }
