@@ -2,7 +2,7 @@
 class MailerManager
 {
     /**
-     * Envoie un mail avec la librairie SwiftMailer
+     * Envoie un mail en utilisant la librairie Swift Mailer.
      *
      * @param string $receiver L'adresse email de la personne qui reçoit l'email
      * @param string $subject L'objet du mail

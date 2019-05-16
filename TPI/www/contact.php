@@ -10,8 +10,8 @@ if (isset($_POST["btnSendRequest"])) {
         $contactPhoneNumber = filter_input(INPUT_POST, "contactPhoneNumber", FILTER_SANITIZE_STRING);
         $contactDescription = filter_input(INPUT_POST, "contactDescription", FILTER_SANITIZE_STRING);
         if (RequestManager::AddRequest($contactFirstName,$contactSecondName,$contactEmail,$contactPhoneNumber,$contactDescription)) {
-            MailerManager::SendMail(RECEIVER_MAIL_REQUEST_ADD,SUBJECT_MAIL_REQUEST_ADD,MESSAGE_MAIL_REQUEST_ADD);
-            echo "<div class='alert alert-success mb-0' role='alert'>Votre demande à été envoyé au réparateur</div>";
+            //MailerManager::SendMail(RECEIVER_MAIL_REQUEST_ADD,SUBJECT_MAIL_REQUEST_ADD,MESSAGE_MAIL_REQUEST_ADD);
+            echo "<div class='alert alert-success mb-0' role='alert'>Votre demande a été envoyée au réparateur</div>";
         } else {
             echo "<div class='alert alert-danger mb-0' role='alert'>Demande invalide</div>";
         }

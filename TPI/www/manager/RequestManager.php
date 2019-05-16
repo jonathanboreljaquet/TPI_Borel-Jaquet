@@ -36,7 +36,7 @@ class RequestManager
         }
     }
     /**
-     * Récupère toutes les demandes de réparation de la base de données dans un tableau d'objet Client et Request.
+     * Récupère toutes les demandes de réparation de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client[],Request[]] $arrRequest Retourne un tableau contenant des tableaux d'objet Client et Request
@@ -77,7 +77,7 @@ class RequestManager
         }
     }
     /**
-     * Modifie le statut d'une demande de réparation
+     * Modifie le statut d'une demande de réparation.
      *
      * @param string $id_request L'id de la demande
      * @param string $status Le nouveau statut de la demande
@@ -101,8 +101,7 @@ class RequestManager
         }
     }
     /**
-     * Récupère toutes les demandes de réparation de statut "ouverte" de la base de données
-     * dans un tableau d'objet Client et Request.
+     * Récupère toutes les demandes de réparation de statut "ouverte" de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
@@ -145,11 +144,11 @@ class RequestManager
     /**
      * Récupère les demandes de statut "traitée" de la base de données triée par mois et par année.
      *
-     * @param string $year L'année des demandes
+     * @param string $year L'année à afficher
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return array $result Retourne un tableau associatif représentant le résultat de la requête SQL
-     *               ou FALSE s'il y a un problème
+     * @return array $result Retourne un tableau associatif représentant le nombre de réparation 
+     *                       effectué par mois dans une année ou FALSE s'il y a un problème
      */
     public static  function GetProcessedRequestOrderByMonthAndYear($year)
     {

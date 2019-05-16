@@ -34,7 +34,7 @@ class EventManager
         }
     }
     /**
-     * Récupère tous les événements en format JSON destiné au calendrier JavaScript FullCalendar
+     * Récupère tous les événements en format JSON destiné au calendrier JavaScript FullCalendar.
      *
      * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>

@@ -8,12 +8,14 @@ if (isset($_POST["btnConnection"])) {
         $pwd = filter_input(INPUT_POST, "pwdLogin", FILTER_SANITIZE_STRING);
         if (UserManager::Connection($pseudo, $pwd)) {
             $_SESSION["isLogged"] = true;
-            echo "<div class='alert alert-success mb-0' role='alert'>Vous vous êtes bien connecté</div>";
-            echo "<meta http-equiv='refresh' content='2;URL=about.php'>";
+            header("location : about.php");
         } else {
-            echo "<div class='alert alert-danger mb-0' role='alert'>Login ou mot de passe incorrect</div>";
+            echo "<div class='alert alert-danger mb-0' role='alert'>Mot de passe ou pseudo incorrect</div>";
         }
     }
+}
+else{
+    echo "<div class='alert alert-danger mb-0' role='alert'>Tous les champs n'ont pas été remplis</div>";
 }
 
 ?>
@@ -37,7 +39,7 @@ if (isset($_POST["btnConnection"])) {
                         <h1 class="text-center" style="border-bottom:#007bff solid 1px;">Connexion</h1>
                         <div class="form-group">
                             <label for="pseudoLogin">Pseudo</label>
-                            <input type="text" class="form-control" id="pseudoLogin" name="pseudoLogin" placeholder="Entrez votre pseudo" required>
+                            <input type="text" value="<?= ((isset($_POST["pseudoLogin"]) ? $_POST["pseudoLogin"] : "")) ?>" class="form-control" id="pseudoLogin" name="pseudoLogin" placeholder="Entrez votre pseudo" required>
                         </div>
                         <div class="form-group">
                             <label for="pwdLogin">Mot de passe</label>

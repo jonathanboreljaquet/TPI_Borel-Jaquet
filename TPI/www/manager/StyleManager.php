@@ -2,7 +2,7 @@
 class StyleManager
 {
     /**
-     * Retourne la bonne couleur pour un statut
+     * Retourne la bonne couleur pour un statut.
      * 
      * @param string $status Le statut choisit
      * 
@@ -27,7 +27,7 @@ class StyleManager
         return $color;
     }
     /**
-     * Retourne le bon format d'une date récupéré en base
+     * Retourne le bon format d'une date récupéré en base de données.
      *   
      * @param string $date La date à modifier
      * 

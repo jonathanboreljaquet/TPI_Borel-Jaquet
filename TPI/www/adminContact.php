@@ -8,7 +8,7 @@ if (isset($_GET["status"]) && isset($_GET["id_request"]) && isset($_GET["clientE
     $clientEmail = filter_input(INPUT_GET, "clientEmail", FILTER_SANITIZE_STRING);
     $id_request = filter_input(INPUT_GET, "id_request", FILTER_SANITIZE_NUMBER_INT);
     if (RequestManager::UpdateRequestStatusById($id_request, $status)) {
-        MailerManager::SendMail($clientEmail, SUBJECT_MAIL_REQUEST_STATUS_UPDATE, MESSAGE_MAIL_REQUEST_STATUS_UPDATE . $arrConstStatus[$status]);
+        //MailerManager::SendMail($clientEmail, SUBJECT_MAIL_REQUEST_STATUS_UPDATE, MESSAGE_MAIL_REQUEST_STATUS_UPDATE . $arrConstStatus[$status]);
         echo "<div class='alert alert-success mb-0' role='alert'>Statut de la demande bien modifié</div>";
     } else {
         echo "<div class='alert alert-success mb-0' role='alert'>Problème lors du changement de statut de la demande</div>";

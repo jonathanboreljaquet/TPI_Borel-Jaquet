@@ -28,7 +28,7 @@ class OpinionManager
         }
     }
     /**
-     * Récupère tous les avis validés de la base de données dans un tableau d'objet Opinion.
+     * Récupère tous les avis validés de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion ou FALSE s'il y a un problème
@@ -59,7 +59,7 @@ class OpinionManager
         }
     }
     /**
-     * Récupère tous les avis non validé de la base de données dans un tableau d'objet Opinion.
+     * Récupère tous les avis non validés de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion ou FALSE s'il y a un problème
@@ -90,7 +90,7 @@ class OpinionManager
         }
     }
     /**
-     * Valide un avis dans la base de données.
+     * Valide un avis dans la base de données en utilisant son identifiant.
      *
      * @param string $id_opinion L'identifiant de l'avis
      *
@@ -112,7 +112,7 @@ class OpinionManager
         }
     }
     /**
-     * Supprime un avis dans la base de données.
+     * Supprime un avis dans la base de données en utilisant son identifiant.
      *
      * @param string $id_opinion L'identifiant de l'avis
      *
