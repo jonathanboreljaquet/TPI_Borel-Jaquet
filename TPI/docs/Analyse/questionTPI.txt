@@ -63,16 +63,35 @@ rep :
 Constante fichier inc.all.php bien ou pas bien ?
 
 -------
+Full calandar = librairie JavaScript
 
 Php mailer fonctionne pas
-rep :
+rep : Tester swift mailer avec une autre connexion ou tester PHP Mailer et sinon avertir madame Travjnack à la seconde 
 Où placer les dossier d'API dans l'arborescence et vue dans un dossier ?
-rep :
+rep : done
 Calendrier ajout événement date début date fin plus pratique, possible ?
-rep :
+rep :  changement base( enlever type, horaire et ajouter dateFin)
 table statique month pour pouvoir afficher un record 0 lorsque qu'un mois n'a pas de réparation ?
-rep :
+rep : non
 détail des classes, ajouter des $ avant variable ?
-rep :
+rep : est égal
 Return array ou return array[object] ?
 rep :
+
+Ortographe pop up = a envoyée
+
+séléction d'une demande plus visible
+
+changer les dates
+
+head fichier
+
+fonction echo le head
+
+
+Commentaire d'en tête fichier
+
+Nom du projet
+Nom du script 
+auteur
+description

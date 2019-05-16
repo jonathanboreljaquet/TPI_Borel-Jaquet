@@ -10,9 +10,8 @@ class RequestManager
      * @param string $phoneNumber Le numéro de téléphonme du client
      * @param string $description La description de la demande de réparation
      * 
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function AddRequest($firstName, $secondName, $email, $phoneNumber, $description)
     {
@@ -39,9 +38,9 @@ class RequestManager
     /**
      * Récupère toutes les demandes de réparation de la base de données dans un tableau d'objet Client et Request.
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
+     * @return array[Client[],Request[]] $arrRequest Retourne un tableau contenant des tableaux d'objet Client et Request
+     *                                    ou FALSE s'il y a un problème
      */
     public static function GetAllRequest()
     {
@@ -83,9 +82,8 @@ class RequestManager
      * @param string $id_request L'id de la demande
      * @param string $status Le nouveau statut de la demande
      * 
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function UpdateRequestStatusById($id_request, $status)
     {
@@ -106,9 +104,9 @@ class RequestManager
      * Récupère toutes les demandes de réparation de statut "ouverte" de la base de données
      * dans un tableau d'objet Client et Request.
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
+     *                               ou FALSE s'il y a un problème
      */
     public static  function GetOpenRequest()
     {
@@ -149,9 +147,9 @@ class RequestManager
      *
      * @param string $year L'année des demandes
      * 
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array $result Retourne un tableau associatif représentant le résultat de la requête SQL
+     *               ou FALSE s'il y a un problème
      */
     public static  function GetProcessedRequestOrderByMonthAndYear($year)
     {

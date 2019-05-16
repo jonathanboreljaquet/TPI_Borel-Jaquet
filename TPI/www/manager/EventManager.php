@@ -9,9 +9,8 @@ class EventManager
      * @param string $typeEvent Le type d'événement
      * @param string $hourEvent L'heure de l'événement
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function AddEvent($id_request, $dateEvent, $typeEvent, $hourEvent)
     {
@@ -35,11 +34,11 @@ class EventManager
         }
     }
     /**
-     * Récupère tous les événements en format JSON destiné au calendrier JavaScript
+     * Récupère tous les événements en format JSON destiné au calendrier JavaScript FullCalendar
      *
      * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return string Retourne une chaine contenant la représentation JSON des événements
+     * @return string Retourne une chaine contenant la représentation JSON des événements ou FALSE s'il y a un problème
      */
     public static function GetAllEventFormatJSON()
     {

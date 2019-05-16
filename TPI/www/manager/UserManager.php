@@ -7,9 +7,9 @@ class UserManager
      * @param string $pseudo Le pseudo du réparateur
      * @param string $pwd Le mot de passe du réparateur
      * 
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return bool Retourne TRUE si le pseudo et le mot de passe sont corrects
+     *              ou FALSE si le mot de passe ou le pseudo est incorrect
      */
     public static function Connection($pseudo, $pwd)
     {
@@ -34,6 +34,18 @@ class UserManager
             }
         } catch (Exception $e) {
             return FALSE;
+        }
+    }
+    /**
+     * Vérifie si le réparateur est connecté ou non
+     * 
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Redirige l'utilisateur vers la page d'accueil si l'utilisateur n'est pas connecté
+     */
+    public static function VerificateRoleUser()
+    {
+        if (!isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] != true) {
+            header("location: about.php");
         }
     }
 }

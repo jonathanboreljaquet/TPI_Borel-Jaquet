@@ -14,7 +14,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ABOUT)) ? "active" : ""; ?>">
-                <a class="nav-link" href=<?= PAGE_ABOUT ?>>Accueil</a>
+                <a class="nav-link" href=<?= PAGE_ABOUT ?>><span class="fa fa-home"></span> Accueil</a>
             </li>
             <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_CONTACT)) ? "active" : ""; ?>">
                 <a class="nav-link" href=<?= PAGE_CONTACT ?>>Contact</a>
@@ -28,10 +28,10 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                     ?>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Administration
+                        <span class="fa fa-user"></span> Administration
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Calendrier</a>
+                            <a class="dropdown-item" href="#">Calendrier <span class="fa fa-calendar"></span></a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CONTACT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CONTACT ?>>Demande</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_ABOUT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_ABOUT ?>>Avis</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_STATISTIC)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_STATISTIC ?>>Statistique</a>
@@ -42,7 +42,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
             ?>
             </li>
             <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_CONNECTION)) ? "active" : ""; ?>">
-                <?= ($isLogged == false) ? '<a class="nav-link" href="' . PAGE_CONNECTION . '">Connexion</a>' : '<a class="nav-link" href="disconnection.php">Deconnexion</a>'; ?>
+                <?= ($isLogged == false) ? '<a class="nav-link" href="' . PAGE_CONNECTION . '"><span class="fa fa-sign-in"></span> Connexion</a>' : '<a class="nav-link" href="disconnection.php"><span class="fa fa-sign-out"></span> Deconnexion</a>'; ?>
             </li>
 
         </ul>

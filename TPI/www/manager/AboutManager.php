@@ -6,7 +6,7 @@ class AboutManager
      * 
      * @throws bool Retourne false s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return About $a Retourne un objet About
+     * @return About $a Retourne un objet About ou FALSE s'il y a un problème
      */
     public static function GetAboutInformation()
     {
@@ -37,9 +37,8 @@ class AboutManager
      * @param string $price Le tarif de la réparation
      * @param string $description La description du réparateur
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function UpdateAboutInformation($phoneNumber, $email, $price, $description)
     {

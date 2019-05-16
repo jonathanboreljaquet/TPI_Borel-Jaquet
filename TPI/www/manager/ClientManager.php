@@ -2,7 +2,7 @@
 class ClientManager
 {
     /**
-     * Enregistre un client dans la base de données.
+     * Enregistre les informations dun client dans la base de données.
      *
      * @param string $firstName Le nom du client
      * @param string $secondName Le prénom du client

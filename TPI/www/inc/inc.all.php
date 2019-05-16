@@ -19,6 +19,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/ClientManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/RequestManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/StyleManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/EventManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/MailerManager.php';
+
+//SwiftMailer
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/config/mailparam.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/www/lib/swiftmailer5/lib/swift_required.php';
 
 //Constante
 const CLIENT = 0;
@@ -41,6 +46,15 @@ const EVENT_TYPE_GIVE = "REDD";
 const EVENT_TYPE_RETURN = "RECUP";
 
 
+const RECEIVER_MAIL_REQUEST_ADD = "infoboboTPI@gmail.com";
+const SUBJECT_MAIL_REQUEST_ADD = "[INFOBOBO.CH] Nouvelle demande de réparation";
+const MESSAGE_MAIL_REQUEST_ADD = "Une nouvelle demande de réparation informatique vient d'être envoyé, 
+                                  consulter l'administration du site <a href='infobobo.ch'>infobobo.ch</a> pour plus d'informations.";
+
+const SUBJECT_MAIL_REQUEST_STATUS_UPDATE = "[INFOBOBO.CH] Réponse de la demande de réparation informatique";
+const MESSAGE_MAIL_REQUEST_STATUS_UPDATE = "Bonjour et merci d'avoir choisis Infobobo pour votre réparation informatique.
+                                            Le statut de votre demande de réparation informatique est passé à ";
+
 $arrConstStatus = array(
     STATUS_OPEN => "Ouverte",
     STATUS_IN_PROGRESS => "En cours",
@@ -62,5 +76,3 @@ $arrMonth = array(
     11 => "Novembre",
     12 => "Décembre",
 );
-
-

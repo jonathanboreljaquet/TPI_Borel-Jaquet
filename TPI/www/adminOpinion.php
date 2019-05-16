@@ -1,11 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
-if (isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] == true) {
-    $isLogged = true;
-} else {
-    header("location: opinion.php");
-}
+UserManager::VerificateRoleUser();
 
 if (isset($_GET["type"]) && isset($_GET["id_opinion"])) {
     $type = filter_input(INPUT_GET, "type", FILTER_SANITIZE_STRING);
@@ -31,14 +27,8 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
     <title>Validation d'avis</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <?php include "inc/header.php" ?> 
 </head>
 
 <body style="background-color: #272727;">
@@ -62,7 +52,7 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
                                 </p>
                                 <div class="row justify-content-end">
                                     <div class="col-md-4 col-lg-2">
-                                        <h5><?= $opinion->date ?></h5>
+                                        <h5><?= StyleManager::sqlDateToWritten($opinion->date) ?></h5>
                                     </div>
                                     <div class="col-md-4 col-lg-2">
                                         <a class="btn btn-success w-100" href="adminOpinion.php?type=accept&id_opinion=<?= $opinion->id_opinion ?>" role="button">Valider</a>

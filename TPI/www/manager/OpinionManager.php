@@ -6,9 +6,8 @@ class OpinionManager
      *
      * @param string $comment Le commentaire de l'avis
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function AddOpinion($comment)
     {
@@ -31,9 +30,8 @@ class OpinionManager
     /**
      * Récupère tous les avis validés de la base de données dans un tableau d'objet Opinion.
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion
+     * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion ou FALSE s'il y a un problème
      */
     public static function GetOpinionValidate()
     {
@@ -63,9 +61,8 @@ class OpinionManager
     /**
      * Récupère tous les avis non validé de la base de données dans un tableau d'objet Opinion.
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion
+     * @return array[Opinion] $arrOpinion Retourne un tableau d'objet Opinion ou FALSE s'il y a un problème
      */
     public static function GetOpinionNotValidate()
     {
@@ -97,9 +94,8 @@ class OpinionManager
      *
      * @param string $id_opinion L'identifiant de l'avis
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function ValidateOpinionById($id_opinion)
     {
@@ -120,9 +116,8 @@ class OpinionManager
      *
      * @param string $id_opinion L'identifiant de l'avis
      *
-     * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return bool Retourne TRUE
+     * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
     public static function DeleteOpinionById($id_opinion)
     {
