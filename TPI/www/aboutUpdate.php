@@ -4,20 +4,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 UserManager::VerificateRoleUser();
 
-
-
-
 if (isset($_POST["btnUpdateAbout"])) {
-    $newPhoneNumber = filter_input(INPUT_POST, "newAboutPhoneNumber", FILTER_SANITIZE_STRING);
-    $newEmail = filter_input(INPUT_POST, "newAboutEmail", FILTER_SANITIZE_STRING);
-    $newPrice = filter_input(INPUT_POST, "newAboutPrice", FILTER_SANITIZE_STRING);
-    $newDescription = filter_input(INPUT_POST, "newAboutDescription", FILTER_SANITIZE_STRING);
+    if (!empty($_POST["newAboutPhoneNumber"]) && !empty($_POST["newAboutEmail"]) && !empty($_POST["newAboutPrice"]) && !empty($_POST["newAboutDescription"])) {
+        $newPhoneNumber = filter_input(INPUT_POST, "newAboutPhoneNumber", FILTER_SANITIZE_STRING);
+        $newEmail = filter_input(INPUT_POST, "newAboutEmail", FILTER_SANITIZE_STRING);
+        $newPrice = filter_input(INPUT_POST, "newAboutPrice", FILTER_SANITIZE_STRING);
+        $newDescription = filter_input(INPUT_POST, "newAboutDescription", FILTER_SANITIZE_STRING);
 
-    if (AboutManager::UpdateAboutInformation($newPhoneNumber,$newEmail,$newPrice,$newDescription)) {
-        echo "<div class='alert alert-success mb-0' role='alert'>Informations bien modifié</div>";
-        echo "<meta http-equiv='refresh' content='2;URL=about.php'>";
+        if (AboutManager::UpdateAboutInformation($newPhoneNumber, $newEmail, $newPrice, $newDescription)) {
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Informations bien modifiées");
+        } else {
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors de la modification des informations");
+        }
     } else {
-        echo "<div class='alert alert-danger mb-0' role='alert'>Problème lors du changement d'informations</div>";
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Tous les champs n'ont pas été remplis");
     }
 }
 $about = AboutManager::GetAboutInformation();
@@ -27,7 +27,7 @@ $about = AboutManager::GetAboutInformation();
 
 <head>
     <title>Modification d'informations</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body style="background-color: #272727;">

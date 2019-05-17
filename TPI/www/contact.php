@@ -3,18 +3,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 
 if (isset($_POST["btnSendRequest"])) {
-    if (isset($_POST["contactFirstName"]) && isset($_POST["contactSecondName"]) && isset($_POST["contactEmail"]) && isset($_POST["contactPhoneNumber"]) && isset($_POST["contactDescription"])) {
+    if (!empty($_POST["contactFirstName"]) && !empty($_POST["contactSecondName"]) && !empty($_POST["contactEmail"]) && !empty($_POST["contactPhoneNumber"]) && !empty($_POST["contactDescription"])) {
         $contactFirstName = filter_input(INPUT_POST, "contactFirstName", FILTER_SANITIZE_STRING);
         $contactSecondName = filter_input(INPUT_POST, "contactSecondName", FILTER_SANITIZE_STRING);
         $contactEmail = filter_input(INPUT_POST, "contactEmail", FILTER_SANITIZE_STRING);
         $contactPhoneNumber = filter_input(INPUT_POST, "contactPhoneNumber", FILTER_SANITIZE_STRING);
         $contactDescription = filter_input(INPUT_POST, "contactDescription", FILTER_SANITIZE_STRING);
-        if (RequestManager::AddRequest($contactFirstName,$contactSecondName,$contactEmail,$contactPhoneNumber,$contactDescription)) {
+        if (RequestManager::AddRequest($contactFirstName, $contactSecondName, $contactEmail, $contactPhoneNumber, $contactDescription)) {
             //MailerManager::SendMail(RECEIVER_MAIL_REQUEST_ADD,SUBJECT_MAIL_REQUEST_ADD,MESSAGE_MAIL_REQUEST_ADD);
-            echo "<div class='alert alert-success mb-0' role='alert'>Votre demande a été envoyée au réparateur</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Votre demande de réparation informatique a été envoyée au réparateur");
         } else {
-            echo "<div class='alert alert-danger mb-0' role='alert'>Demande invalide</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Demande invalide");
         }
+    } else {
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Tous les champs n'ont pas été remplis");
     }
 }
 ?>
@@ -23,7 +25,7 @@ if (isset($_POST["btnSendRequest"])) {
 
 <head>
     <title>Contact</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body style="background-color: #272727;">
@@ -41,19 +43,19 @@ if (isset($_POST["btnSendRequest"])) {
                         <form action="#" method="POST" class="w-100">
                             <div class="form-group">
                                 <label for="contactFirstName">Nom</label>
-                                <input type="text" name="contactFirstName" class="form-control" id="contactFirstName" required>
+                                <input type="text" value="<?= ((isset($_POST["contactFirstName"]) ? $_POST["contactFirstName"] : "")) ?>" name="contactFirstName" class="form-control" id="contactFirstName">
                             </div>
                             <div class="form-group">
                                 <label for="contactSecondName">Prénom</label>
-                                <input type="text" name="contactSecondName" class="form-control" id="contactSecondName" required>
+                                <input type="text" value="<?= ((isset($_POST["contactSecondName"]) ? $_POST["contactSecondName"] : "")) ?>" name="contactSecondName" class="form-control" id="contactSecondName">
                             </div>
                             <div class="form-group">
                                 <label for="contactEmail">Email</label>
-                                <input type="email" name="contactEmail" class="form-control" id="contactEmail" required>
+                                <input type="email" value="<?= ((isset($_POST["contactEmail"]) ? $_POST["contactEmail"] : "")) ?>" name="contactEmail" class="form-control" id="contactEmail">
                             </div>
                             <div class="form-group">
                                 <label for="contactPhoneNumber">Numéro de téléphone</label>
-                                <input type="text" name="contactPhoneNumber" class="form-control" id="contactPhoneNumber" required>
+                                <input type="text" value="<?= ((isset($_POST["contactPhoneNumber"]) ? $_POST["contactPhoneNumber"] : "")) ?>" name="contactPhoneNumber" class="form-control" id="contactPhoneNumber">
                             </div>
                     </div>
                 </div>
@@ -61,11 +63,12 @@ if (isset($_POST["btnSendRequest"])) {
                     <div class="col-12">
                         <div class="form-group">
                             <label for="contactDescription">Description du problème</label>
-                            <textarea class="form-control" style="resize:none" name="contactDescription" id="contactDescription" rows="10" required></textarea>
+                            <textarea class="form-control" style="resize:none" name="contactDescription" id="contactDescription" rows="10"><?= ((isset($_POST["contactDescription"]) ? $_POST["contactDescription"] : "")) ?></textarea>
                         </div>
                     </div>
                 </div>
                 <button type="submit" name="btnSendRequest" class="btn btn-primary">Envoyer</button>
+                <small id="emailHelp" class="form-text text-muted">Tous les champs sont obligatoires.</small>
                 </form>
 
 

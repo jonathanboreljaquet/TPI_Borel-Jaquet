@@ -55,6 +55,9 @@ const SUBJECT_MAIL_REQUEST_STATUS_UPDATE = "[INFOBOBO.CH] Réponse de la demande
 const MESSAGE_MAIL_REQUEST_STATUS_UPDATE = "Bonjour et merci d'avoir choisis Infobobo pour votre réparation informatique.
                                             Le statut de votre demande de réparation informatique est passé à ";
 
+const ALERT_TYPE_SUCCESS = "success";
+const ALERT_TYPE_FAILED = "danger";
+
 $arrConstStatus = array(
     STATUS_OPEN => "Ouverte",
     STATUS_IN_PROGRESS => "En cours",

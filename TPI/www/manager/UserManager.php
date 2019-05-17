@@ -2,7 +2,7 @@
 class UserManager
 {
     /**
-     * Valide la connexion d'un réparateur au site web
+     * Valide la connexion d'un réparateur au site web.
      * 
      * @param string $pseudo Le pseudo du réparateur
      * @param string $pwd Le mot de passe du réparateur

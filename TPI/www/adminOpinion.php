@@ -8,15 +8,15 @@ if (isset($_GET["type"]) && isset($_GET["id_opinion"])) {
     $id_opinion = filter_input(INPUT_GET, "id_opinion", FILTER_SANITIZE_NUMBER_INT);
     if ($type == "accept") {
         if (OpinionManager::ValidateOpinionById($id_opinion)) {
-            echo "<div class='alert alert-success mb-0' role='alert'>Avis validé</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Avis validé");
         } else {
-            echo "<div class='alert alert-success mb-0' role='alert'>Problème lors de la validation de l'avis</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors de la validation de l'avis");
         }
     } else if ($type == "refuse") {
         if (OpinionManager::DeleteOpinionById($id_opinion)) {
-            echo "<div class='alert alert-success mb-0' role='alert'>Avis refusé</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Avis refusé");
         } else {
-            echo "<div class='alert alert-success mb-0' role='alert'>Problème lors du refus de l'avis</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors du refus de l'avis");
         }
     }
 }
@@ -28,7 +28,7 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
 
 <head>
     <title>Validation d'avis</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body style="background-color: #272727;">
@@ -52,7 +52,7 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
                                 </p>
                                 <div class="row justify-content-end">
                                     <div class="col-md-4 col-lg-2">
-                                        <h5><?= StyleManager::sqlDateToWritten($opinion->date) ?></h5>
+                                        <h5><?= StyleManager::SqlDateToWritten($opinion->date) ?></h5>
                                     </div>
                                     <div class="col-md-4 col-lg-2">
                                         <a class="btn btn-success w-100" href="adminOpinion.php?type=accept&id_opinion=<?= $opinion->id_opinion ?>" role="button">Valider</a>

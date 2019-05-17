@@ -45,4 +45,17 @@ class StyleManager
         $day .= ($day < 2);
         return "$day $arrMonth[$month] $year";
     }
+    public static function ShowAlert($type, $message)
+    {
+        switch ($type) {
+            case ALERT_TYPE_SUCCESS:
+                echo "<div class='alert alert-success mb-0' role='alert'>".$message."</div>";
+                break;
+            case ALERT_TYPE_FAILED:
+                echo "<div class='alert alert-danger mb-0' role='alert'>".$message."</div>";
+                break;
+            default:
+                echo "<div class='alert alert-danger mb-0' role='alert'>Un problème est survenue</div>";
+        }
+    }
 }

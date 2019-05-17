@@ -76,7 +76,7 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
                         <option value="<?= EVENT_TYPE_RETURN ?>">Reddition</option>
                     </select>
                 </div>
-                <button type="submit" name="saveEvent" class="btn btn-primary">Enregistrer</button>
+                <button type="submit" name="saveEvent" class="btn btn-primary">Planifier</button>
             </form>
             <?php
             foreach ($arrOpenRequest as $request) :

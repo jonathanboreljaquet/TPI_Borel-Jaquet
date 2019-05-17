@@ -14,9 +14,6 @@ class OpinionManager
         $sql = "INSERT INTO `bj_tpi_bd`.`avis` (`date`, `comment`, `est_valide`, `id_reparateur`) 
                 VALUES (:date, :comment, '0', '1')";
         try {
-            if ($comment == "") {
-                throw new Exception('aucun commentaire ');
-            }
             $date = date("Y-m-d");
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':date', $date, PDO::PARAM_STR);

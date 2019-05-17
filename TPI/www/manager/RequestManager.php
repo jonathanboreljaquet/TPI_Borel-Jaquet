@@ -47,7 +47,7 @@ class RequestManager
         $sql = "SELECT clients.id_client,demandes.id_demande, nom, prenom, email,telephone,description,statut
                 FROM clients, demandes
                 WHERE clients.id_client = demandes.id_client 
-                ORDER BY statut ASC";
+                ORDER BY statut ASC, id_demande DESC";
         $arrRequest = array();
         try {
             $stmt = Database::prepare($sql);

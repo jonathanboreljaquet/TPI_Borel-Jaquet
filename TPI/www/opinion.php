@@ -4,13 +4,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 $arrOpinion = OpinionManager::GetOpinionValidate();
 
 if (isset($_POST["btnSendOpinion"])) {
-    if (isset($_POST["opinionComment"])) {
+    if (!empty($_POST["opinionComment"])) {
         $comment = filter_input(INPUT_POST, "opinionComment", FILTER_SANITIZE_STRING);
         if (OpinionManager::AddOpinion($comment)) {
-            echo "<div class='alert alert-success mb-0' role='alert'>Votre avis est en attente de validation</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Votre avis est en attente de validation");
         } else {
-            echo "<div class='alert alert-danger mb-0' role='alert'>Avis invalide</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Avis invalide");
         }
+    }
+    else{
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Le champ commentaire n'a pas été rempli");
     }
 }
 ?>
@@ -53,7 +56,7 @@ if (isset($_POST["btnSendOpinion"])) {
                                 </p>
                                 <div class="row justify-content-end">
                                     <div class="col-md-4 col-lg-2">
-                                        <h5><?= StyleManager::sqlDateToWritten($opinion->date);  ?></h5>
+                                        <h5><?= StyleManager::SqlDateToWritten($opinion->date);  ?></h5>
                                     </div>
                                 </div>
                             </div>

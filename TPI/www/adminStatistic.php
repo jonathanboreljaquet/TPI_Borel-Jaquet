@@ -5,6 +5,8 @@ UserManager::VerificateRoleUser();
 if (isset($_POST["btnShowStat"])) {
     $year = filter_input(INPUT_POST, "year", FILTER_SANITIZE_STRING);
     $arrMonthStat = RequestManager::GetProcessedRequestOrderByMonthAndYear($year);
+} else {
+    $arrMonthStat = RequestManager::GetProcessedRequestOrderByMonthAndYear(date('Y'));
 }
 
 ?>
@@ -13,7 +15,7 @@ if (isset($_POST["btnShowStat"])) {
 
 <head>
     <title>Statistiques</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body style="background-color: #272727;">
@@ -24,14 +26,14 @@ if (isset($_POST["btnShowStat"])) {
         <div class="row justify-content-center">
             <div class="col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4 " style="background-color: #E0E0E0;">
                 <div class="row justify-content-center mb-2">
-                    <h4>Statistique des réparations effectuée</h4>
+                    <h4>Statistiques des réparations effectuées</h4>
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-4">
                         <form method="POST" action="#">
                             <div class="form-group">
                                 <label for="numericUpDownYear">Année :</label>
-                                <input type="number" class="form-control" id="numericUpDownYear" name="year" value="2019">
+                                <input type="number" class="form-control" id="numericUpDownYear" name="year" value="<?= ((isset($_POST["btnShowStat"]) ? $year : date('Y'))) ?>">
                             </div>
                             <button type="submit" name="btnShowStat" class="btn btn-primary">Rechercher</button>
                         </form>
@@ -39,7 +41,7 @@ if (isset($_POST["btnShowStat"])) {
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <?php if (isset($arrMonthStat)) { ?>
+                        <?php if (!empty($arrMonthStat)) { ?>
                             <div class="table-responsive">
                                 <table class="table table-dark rounded border-primary">
                                     <thead>
@@ -63,11 +65,10 @@ if (isset($_POST["btnShowStat"])) {
                                 </table>
                             </div>
                         <?php
-                        }
-                        else{
-                            echo "<h6>Aucune recherche en cours</h6>";
-                        }
-                         ?>
+                    } else {
+                        echo "<h6>Aucune réparation éfféctué</h6>";
+                    }
+                    ?>
                     </div>
                 </div>
             </div>

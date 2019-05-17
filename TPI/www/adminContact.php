@@ -9,9 +9,9 @@ if (isset($_GET["status"]) && isset($_GET["id_request"]) && isset($_GET["clientE
     $id_request = filter_input(INPUT_GET, "id_request", FILTER_SANITIZE_NUMBER_INT);
     if (RequestManager::UpdateRequestStatusById($id_request, $status)) {
         //MailerManager::SendMail($clientEmail, SUBJECT_MAIL_REQUEST_STATUS_UPDATE, MESSAGE_MAIL_REQUEST_STATUS_UPDATE . $arrConstStatus[$status]);
-        echo "<div class='alert alert-success mb-0' role='alert'>Statut de la demande bien modifié</div>";
+        StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Statut de la demande bien modifié");
     } else {
-        echo "<div class='alert alert-success mb-0' role='alert'>Problème lors du changement de statut de la demande</div>";
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors du changement de statut de la demande");
     }
 }
 
@@ -22,7 +22,7 @@ $arrRequest = RequestManager::GetAllRequest();
 
 <head>
     <title>Administration des demandes</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body style="background-color: #272727;">
@@ -97,5 +97,3 @@ $arrRequest = RequestManager::GetAllRequest();
 </body>
 
 </html>
-
-
