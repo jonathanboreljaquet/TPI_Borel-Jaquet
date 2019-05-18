@@ -7,7 +7,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Infobobo</a>
+    <img src="img/INFOBOBO.png" width="100" height="54" alt="">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,7 +28,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                     ?>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="fa fa-user"></span> Administration
+                            <span class="fa fa-user"></span> Administration
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Calendrier <span class="fa fa-calendar"></span></a>
@@ -42,7 +42,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
             ?>
             </li>
             <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_CONNECTION)) ? "active" : ""; ?>">
-                <?= ($isLogged == false) ? '<a class="nav-link" href="' . PAGE_CONNECTION . '"><span class="fa fa-sign-in"></span> Connexion</a>' : '<a class="nav-link" href="disconnection.php"><span class="fa fa-sign-out"></span> Deconnexion</a>'; ?>
+                <?= ($isLogged == false) ? '<a class="nav-link" href="' . PAGE_CONNECTION . '"><span class="fas fa-sign-in-alt"></span> Connexion</a>' : '<a class="nav-link" href="disconnection.php"><span class="fas fa-sign-out-alt"></span> Deconnexion</a>'; ?>
             </li>
 
         </ul>
