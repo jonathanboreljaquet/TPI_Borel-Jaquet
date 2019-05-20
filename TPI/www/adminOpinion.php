@@ -40,6 +40,7 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
             <div class="col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4 " style="background-color: #E0E0E0;">
                 <div class="row justify-content-center mb-2">
                     <h4>Avis en attente de validation</h4>
+                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 </div>
                 <?php
                 foreach ($arrOpinion as $opinion) :

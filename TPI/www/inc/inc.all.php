@@ -41,6 +41,7 @@ const PAGE_CONNECTION = "connection.php";
 const PAGE_ADMIN_ABOUT = "adminOpinion.php";
 const PAGE_ADMIN_CONTACT = "adminContact.php";
 const PAGE_ADMIN_STATISTIC = "adminStatistic.php";
+const PAGE_ADMIN_CALENDAR = "adminCalendar.php";
 
 const EVENT_TYPE_GIVE = "REDD";
 const EVENT_TYPE_RETURN = "RECUP";
@@ -79,3 +80,5 @@ $arrMonth = array(
     11 => "Novembre",
     12 => "Décembre",
 );
+
+

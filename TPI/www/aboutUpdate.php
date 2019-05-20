@@ -39,6 +39,7 @@ $about = AboutManager::GetAboutInformation();
             <div class="col-md-4 col-lg-4 border justify-content-center border-primary rounded mt-4 p-4" style="background-color: #E0E0E0;">
                 <div class="row justify-content-center">
                     <h1>Modification de mes informations</h1>
+                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 </div>
                 <div class="row justify-content-center">
                     <form action="#" method="POST" class="w-100">

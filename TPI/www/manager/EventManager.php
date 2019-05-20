@@ -12,19 +12,19 @@ class EventManager
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return bool Retourne TRUE ou FALSE s'il y a un problème
      */
-    public static function AddEvent($id_request, $dateEvent, $typeEvent, $hourEvent)
+    public static function AddEvent($id_request, $dateEventStart, $dateEventEnd)
     {
-        $sql = "INSERT INTO `bj_tpi_bd`.`evenement` (`id_demande`, `date`, `type`, `horaire`, `id_reparateur`) 
-                VALUES (:id_request, :dateEvent, :typeEvent, :hourEvent, '1')";
+        $sql = "INSERT INTO `bj_tpi_bd`.`evenement` (`id_demande`, `date_debut`, `date_fin`, `id_reparateur`) 
+                VALUES (:id_request, :dateEventStart, :dateEventEnd, 1)";
+
         try {
             $pdo = Database::getInstance();
             $stmt = Database::prepare($sql);
             $pdo->beginTransaction();
             RequestManager::UpdateRequestStatusById($id_request, STATUS_IN_PROGRESS);
             $stmt->bindParam(':id_request', $id_request, PDO::PARAM_INT);
-            $stmt->bindParam(':dateEvent', $dateEvent, PDO::PARAM_STR);
-            $stmt->bindParam(':typeEvent', $typeEvent, PDO::PARAM_STR);
-            $stmt->bindParam(':hourEvent', $hourEvent, PDO::PARAM_STR);
+            $stmt->bindParam(':dateEventStart', $dateEventStart, PDO::PARAM_STR);
+            $stmt->bindParam(':dateEventEnd', $dateEventEnd, PDO::PARAM_STR);
             $stmt->execute();
             $pdo->commit();
             return TRUE;
@@ -42,13 +42,9 @@ class EventManager
      */
     public static function GetAllEventFormatJSON()
     {
-        $sql = "SELECT e.date,e.type,e.horaire,c.nom,c.prenom 
-        FROM bj_tpi_bd.evenement as e,bj_tpi_bd.demandes as d,bj_tpi_bd.clients as c 
-        WHERE d.id_demande=e.id_demande and c.id_client = d.id_client";
-        $arrTypeEvent = array(
-            EVENT_TYPE_GIVE => "Reddition",
-            EVENT_TYPE_RETURN => "Récupération"
-        );
+        $sql = "SELECT e.date_debut,e.date_fin,c.nom,c.prenom 
+                FROM bj_tpi_bd.evenement as e,bj_tpi_bd.demandes as d,bj_tpi_bd.clients as c 
+                WHERE d.id_demande=e.id_demande and c.id_client = d.id_client";
         $arrAllEvent = array();
 
         try {
@@ -57,8 +53,9 @@ class EventManager
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $event) {
                 $arrEvent = array(
-                    "title" => $event["nom"] . " " . $event["prenom"] . " pour " . $arrTypeEvent[$event["type"]],
-                    "start" => $event["date"] . "T" . $event["horaire"]
+                    "title" => $event["nom"] . " " . $event["prenom"],
+                    "start" => $event["date_debut"],
+                    "end" => $event["date_fin"]
                 );
                 array_push($arrAllEvent, $arrEvent);
             }

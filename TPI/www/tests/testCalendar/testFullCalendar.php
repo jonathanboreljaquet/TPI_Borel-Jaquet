@@ -1,12 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 if (isset($_POST["saveEvent"])) {
-    if ($_POST["id_requestSelected"] != null && $_POST["eventDate"] != null) {
+    if (!empty($_POST["id_requestSelected"]) && !empty($_POST["eventDate"]) && !empty($_POST["eventDate2"])) {
         $id_request = filter_input(INPUT_POST, "id_requestSelected", FILTER_SANITIZE_STRING);
-        $eventDate = filter_input(INPUT_POST, "eventDate", FILTER_SANITIZE_STRING);
-        $eventHour = filter_input(INPUT_POST, "eventHour", FILTER_SANITIZE_STRING);
-        $eventType = filter_input(INPUT_POST, "eventType", FILTER_SANITIZE_STRING);
-        if (EventManager::AddEvent($id_request, $eventDate, $eventType, $eventHour)) {
+        $eventDateStart = filter_input(INPUT_POST, "eventDate", FILTER_SANITIZE_STRING);
+        $eventDateEnd = filter_input(INPUT_POST, "eventDate2", FILTER_SANITIZE_STRING);
+        if (EventManager::AddEvent($id_request, $eventDateStart, $eventDateEnd)) {
             echo "<div class='alert alert-success mb-0' role='alert'>Rendez-vous créé</div>";
         } else {
             echo "<div class='alert alert-danger mb-0' role='alert'>Problème lors de l'insertion du rendez-vous</div>";
@@ -53,22 +52,6 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
                 <div class="form-group">
                     <label for="eventDate2">Date 2</label>
                     <input name="eventDate2" type="text" class="form-control" id="eventDate2" readonly>
-                </div>
-                <div class="form-group">
-                    <select name="eventHour" class="custom-select">
-                        <?php
-                        for ($i = 1; $i <= 24; $i++) :
-                            $value =  sprintf("%'.02d", $i) . ":00";
-                            ?>
-                            <option value="<?= $value ?>"><?= $value ?></option>
-                        <?php endfor;  ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="eventType" class="custom-select">
-                        <option value="<?= EVENT_TYPE_GIVE ?>">Récupération</option>
-                        <option value="<?= EVENT_TYPE_RETURN ?>">Reddition</option>
-                    </select>
                 </div>
                 <button type="submit" name="saveEvent" class="btn btn-primary">Planifier</button>
             </form>
@@ -135,22 +118,18 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
         timezone: "local",
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'], //ceux que j'ai link (CSS/JS)
         header: { //le menu avec les différent boutons
-            left: 'dayGridMonth,timeGridWeek,timeGridDay,list',
+            left: 'dayGridMonth,dayGridWeek,timeGridDay,list',
             center: 'title',
             right: 'prevYear,prev,next,nextYear'
         },
         defaultView: 'dayGridMonth', //le type de calendrier a afficher au chargement 
         selectable: true, // permet de chosir un jour
         locale: 'fr-ch', // la langue
-        dateClick: function(info) { // function a chaque click de date
-            var today = new Date;
-            var selectDay = new Date(info.dateStr);
-            if (selectDay.getDay() < today.getDay()) {
-                alert("Impossible de choisir une date plus petite qu'aujoud'hui");
-            } else {
+        select: function(info) { // function a chaque click de date
 
-                document.getElementById("eventDate").value = info.dateStr;
-            }
+            document.getElementById("eventDate").value = info.startStr;
+            document.getElementById("eventDate2").value = info.endStr;
+
         },
 
 

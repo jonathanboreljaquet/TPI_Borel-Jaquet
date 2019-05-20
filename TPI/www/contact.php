@@ -37,6 +37,7 @@ if (isset($_POST["btnSendRequest"])) {
             <div class="ccol-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4 " style="background-color: #E0E0E0;">
                 <div class="row justify-content-center">
                     <h4>Faire une demande de réparation</h4>
+                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-lg-4">

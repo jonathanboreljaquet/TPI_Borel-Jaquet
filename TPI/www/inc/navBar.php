@@ -31,7 +31,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                             <span class="fa fa-user"></span> Administration
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Calendrier <span class="fa fa-calendar"></span></a>
+                            <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CALENDAR)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CALENDAR ?>>Calendrier <span class="fa fa-calendar"></span></a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CONTACT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CONTACT ?>>Demande</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_ABOUT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_ABOUT ?>>Avis</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_STATISTIC)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_STATISTIC ?>>Statistique</a>

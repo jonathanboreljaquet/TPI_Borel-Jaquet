@@ -20,7 +20,7 @@ $about = AboutManager::GetAboutInformation();
         <div class="row justify-content-center">
             <div class="col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4" style="background-color: #E0E0E0;">
                 <h1>À propos de moi</h1>
-
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 <table>
                     <tr>
                         <td>
@@ -67,6 +67,7 @@ $about = AboutManager::GetAboutInformation();
 
             </div>
         </div>
+        
     </div>
 
 </body>

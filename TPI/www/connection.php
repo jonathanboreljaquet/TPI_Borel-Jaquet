@@ -36,7 +36,8 @@ if (isset($_POST["btnConnection"])) {
             <div class="col-md-4 col-lg-4 border justify-content-center border-primary rounded mt-4 p-4" style="background-color: #E0E0E0;">
                 <div class="row justify-content-center">
                     <form action="#" method="post" style="width:100%;">
-                        <h1 class="text-center" style="border-bottom:#007bff solid 1px;">Connexion</h1>
+                        <h1 class="text-center">Connexion</h1>
+                        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                         <div class="form-group">
                             <label for="pseudoLogin">Pseudo</label>
                             <input type="text" value="<?= ((isset($_POST["pseudoLogin"]) ? $_POST["pseudoLogin"] : "")) ?>" class="form-control" id="pseudoLogin" name="pseudoLogin" placeholder="Entrez votre pseudo">
