@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Page d'administration des rendez-vous du réparateur.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 UserManager::VerificateRoleUser();
@@ -7,11 +14,16 @@ if (isset($_GET["saveEvent"])) {
         $id_request = filter_input(INPUT_GET, "id_requestSelected", FILTER_SANITIZE_STRING);
         $eventDateStart = filter_input(INPUT_GET, "eventDateStart", FILTER_SANITIZE_STRING);
         $eventDateEnd = filter_input(INPUT_GET, "eventDateEnd", FILTER_SANITIZE_STRING);
+        $arrRequestClientById = RequestManager::GetRequestById($id_request);
         if (EventManager::AddEvent($id_request, $eventDateStart, $eventDateEnd)) {
-            echo "<div class='alert alert-success mb-0' role='alert'>Rendez-vous créé</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Rendez-vous créé");
+            MailerManager::SendMailToClient(STATUS_IN_PROGRESS, $arrRequestClientById[CLIENT],$arrRequestClientById[REQUEST]);
         } else {
-            echo "<div class='alert alert-danger mb-0' role='alert'>Problème lors de l'insertion du rendez-vous</div>";
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Problème lors de l'insertion du rendez-vous");
         }
+    }
+    else{
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Tous les éléments nécessaires n'ont pas été sélectionné");
     }
 }
 $arrOpenRequest = RequestManager::GetOpenRequest();
@@ -21,9 +33,6 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
 
 <head>
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/header.php'; ?>
-    <!--    Bootstrapp  4.0.0 et Fontawesome 5.0.6 -->
-    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
     <!-- Plugins css pour un affichage correct des différents plugins utilisés-->
     <link href='lib/fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet' />
     <link href='lib/fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet' />
@@ -142,8 +151,10 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
         },
 
 
-
-        events: data
+        events: data,
+        eventColor: '#2C3E50',
+        eventTextColor : '#FFFFFF'
+        
 
     });
     calendar.render();

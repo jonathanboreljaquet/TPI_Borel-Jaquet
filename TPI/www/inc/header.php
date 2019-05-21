@@ -1,6 +1,14 @@
+<!--
+  Projet: SOS INFOBOBO
+  Description: Fichier à inclure dans tous les fichiers, corréspont à toutes les balises d'header HTML
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+-->
+<!-- Balise meta d'encondage -->
 <meta charset="utf-8">
+<!-- Balise meta permettant au site d'être affiché correctement sur d'autres dispositif -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!-- FONTAWESOME CDN -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <!-- BOOTSTRAP JavaScript CDN (JQuery, Popper.js, Plugins JavaScript de BootStrap) -->

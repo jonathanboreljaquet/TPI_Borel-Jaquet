@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe conteneur en référence à la table "demandes".
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 /**
  * @brief	Objet Request
  * @remark  Cet objet est utilisé comme conteneur en référence avec la table demandes

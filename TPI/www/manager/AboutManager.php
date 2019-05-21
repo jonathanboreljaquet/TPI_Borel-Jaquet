@@ -1,4 +1,12 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe AboutManager contenant les fonctions en rapport avec les informations personnelles du réparateur,
+               plus préciséement de la table "infos_dynamaique".
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
 class AboutManager
 {
     /**
@@ -12,7 +20,6 @@ class AboutManager
     {
         $sql = "SELECT id_infos_dynamiques,telephone,email,tarif,description 
                 FROM bj_tpi_bd.infos_dynamiques;";
-        $arrAbout = array();
         try {
             $stmt = Database::prepare($sql);
             $stmt->execute();

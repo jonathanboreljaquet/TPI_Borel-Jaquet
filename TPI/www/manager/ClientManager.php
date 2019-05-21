@@ -1,4 +1,12 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe ClientManager contenant les fonctions en rapport avec les informations personnelles du client,
+               plus préciséement de la table "clients".
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
 class ClientManager
 {
     /**

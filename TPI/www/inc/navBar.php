@@ -1,4 +1,13 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Fichier à inclure dans tous les fichiers, correspond à la barre de navigation du site.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
+
+//Test si l'utilisateur est connecté
 if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
     $isLogged = true;
 } else {
@@ -33,7 +42,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CALENDAR)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CALENDAR ?>>Calendrier <span class="fa fa-calendar"></span></a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_CONTACT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_CONTACT ?>>Demande</a>
-                            <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_ABOUT)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_ABOUT ?>>Avis</a>
+                            <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_OPINION)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_OPINION ?>>Avis</a>
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_STATISTIC)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_STATISTIC ?>>Statistique</a>
                         </div>
                     </div>

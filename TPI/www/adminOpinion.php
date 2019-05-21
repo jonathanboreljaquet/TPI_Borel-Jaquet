@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Page d'administration pour la validation ou le refus d'un avis.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 UserManager::VerificateRoleUser();
@@ -43,6 +50,7 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
                     <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 </div>
                 <?php
+                if(!empty($arrOpinion)){
                 foreach ($arrOpinion as $opinion) :
                     ?>
                     <div class="row justify-content-center">
@@ -65,6 +73,9 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
                     </div>
                 <?php
             endforeach;
+        }else{
+            echo "<h6>Aucun avis en attente de validation</h6>";
+        }
             ?>
             </div>
         </div>

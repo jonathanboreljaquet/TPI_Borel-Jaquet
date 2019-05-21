@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Page de création de demande de réparation informatique pour le client.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 
@@ -10,7 +17,7 @@ if (isset($_POST["btnSendRequest"])) {
         $contactPhoneNumber = filter_input(INPUT_POST, "contactPhoneNumber", FILTER_SANITIZE_STRING);
         $contactDescription = filter_input(INPUT_POST, "contactDescription", FILTER_SANITIZE_STRING);
         if (RequestManager::AddRequest($contactFirstName, $contactSecondName, $contactEmail, $contactPhoneNumber, $contactDescription)) {
-            //MailerManager::SendMail(RECEIVER_MAIL_REQUEST_ADD,SUBJECT_MAIL_REQUEST_ADD,MESSAGE_MAIL_REQUEST_ADD);
+            MailerManager::SendMailToRepairer($contactFirstName, $contactSecondName, $contactEmail, $contactPhoneNumber, $contactDescription);
             StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Votre demande de réparation informatique a été envoyée au réparateur");
         } else {
             StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Demande invalide");

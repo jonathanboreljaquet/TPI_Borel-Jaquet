@@ -1,5 +1,11 @@
 <?php
-
+/*
+  Projet: SOS INFOBOBO
+  Description: Page de connexion du réparateur
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 if (isset($_POST["btnConnection"])) {
@@ -8,7 +14,7 @@ if (isset($_POST["btnConnection"])) {
         $pwd = filter_input(INPUT_POST, "pwdLogin", FILTER_SANITIZE_STRING);
         if (UserManager::Connection($pseudo, $pwd)) {
             $_SESSION["isLogged"] = true;
-            header("location: about.php");
+            header("location:".PAGE_ABOUT);
         } else {
             StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Mot de passe ou pseudo incorrect");
         }

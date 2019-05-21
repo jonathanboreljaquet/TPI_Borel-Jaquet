@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Page d'affichage des informations personnelles du réparateur.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 
@@ -57,7 +64,7 @@ $about = AboutManager::GetAboutInformation();
                         ?>
                         <tr>
                             <td>
-                                <a class="btn btn-primary" href="aboutUpdate.php" role="button">Modifier</a>
+                                <a class="btn btn-primary" href=<?= PAGE_ADMIN_ABOUT ?> role="button">Modifier</a>
                             </td>
                         </tr>
                     <?php

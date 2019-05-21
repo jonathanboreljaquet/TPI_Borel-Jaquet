@@ -1,4 +1,12 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe OpinionManager contenant les fonctions en rapport avec les avis créés par les clients,
+               plus précisément de la table "avis".
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
 class OpinionManager
 {
     /**
@@ -13,14 +21,16 @@ class OpinionManager
     {
         $sql = "INSERT INTO `bj_tpi_bd`.`avis` (`date`, `comment`, `est_valide`, `id_reparateur`) 
                 VALUES (:date, :comment, '0', '1')";
+        $date = date("Y-m-d");
         try {
-            $date = date("Y-m-d");
             $stmt = Database::prepare($sql);
+
             $stmt->bindParam(':date', $date, PDO::PARAM_STR);
             $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
             $stmt->execute();
             return TRUE;
         } catch (Exception $e) {
+            throw $e;
             return FALSE;
         }
     }

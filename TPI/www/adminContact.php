@@ -1,14 +1,21 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Page d'administration des demandes de réparation informatique du réparateur.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 UserManager::VerificateRoleUser();
 
-if (isset($_GET["status"]) && isset($_GET["id_request"]) && isset($_GET["clientEmail"])) {
+if (isset($_GET["status"]) && isset($_GET["id_request"])) {
     $status = filter_input(INPUT_GET, "status", FILTER_SANITIZE_STRING);
-    $clientEmail = filter_input(INPUT_GET, "clientEmail", FILTER_SANITIZE_STRING);
     $id_request = filter_input(INPUT_GET, "id_request", FILTER_SANITIZE_NUMBER_INT);
+    $arrRequestClientById = RequestManager::GetRequestById($id_request);
     if (RequestManager::UpdateRequestStatusById($id_request, $status)) {
-        //MailerManager::SendMail($clientEmail, SUBJECT_MAIL_REQUEST_STATUS_UPDATE, MESSAGE_MAIL_REQUEST_STATUS_UPDATE . $arrConstStatus[$status]);
+        MailerManager::SendMailToClient($arrConstStatus[$status], $arrRequestClientById[CLIENT],$arrRequestClientById[REQUEST]);
         StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Statut de la demande bien modifié");
     } else {
         StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors du changement de statut de la demande");
@@ -38,56 +45,60 @@ $arrRequest = RequestManager::GetAllRequest();
                 </div>
 
                 <?php
-                foreach ($arrRequest as $arrRequestClient) :
-                    ?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table class="table table-dark rounded border-primary">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 15%" scope="col">Nom</th>
-                                            <th style="width: 15%" scope="col">Prénom</th>
-                                            <th style="width: 15%" scope="col">Email</th>
-                                            <th style="width: 15%" scope="col">Téléphone</th>
-                                            <th style="width: 15%" scope="col">Statut</th>
-                                            <th style="width: 15%" scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><?= $arrRequestClient[CLIENT]->firstName ?></td>
-                                            <td><?= $arrRequestClient[CLIENT]->secondName ?></td>
-                                            <td><?= $arrRequestClient[CLIENT]->email ?></td>
-                                            <td><?= $arrRequestClient[CLIENT]->phoneNumber ?></td>
-                                            <td style="color:<?= StyleManager::ColorStatus($arrRequestClient[REQUEST]->status) ?>;"><?= $arrConstStatus[$arrRequestClient[REQUEST]->status] ?></td>
+                if (!empty($arrRequest)) {
+                    foreach ($arrRequest as $arrRequestClient) :
+                        ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-dark rounded border-primary">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 15%" scope="col">Nom</th>
+                                                <th style="width: 15%" scope="col">Prénom</th>
+                                                <th style="width: 15%" scope="col">Email</th>
+                                                <th style="width: 15%" scope="col">Téléphone</th>
+                                                <th style="width: 15%" scope="col">Statut</th>
+                                                <th style="width: 15%" scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><?= $arrRequestClient[CLIENT]->firstName ?></td>
+                                                <td><?= $arrRequestClient[CLIENT]->secondName ?></td>
+                                                <td><?= $arrRequestClient[CLIENT]->email ?></td>
+                                                <td><?= $arrRequestClient[CLIENT]->phoneNumber ?></td>
+                                                <td style="color:<?= StyleManager::ColorStatus($arrRequestClient[REQUEST]->status) ?>;"><?= $arrConstStatus[$arrRequestClient[REQUEST]->status] ?></td>
 
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5">
-                                                <textarea rows="5" class=" form-control" readonly style="resize: none;"><?= $arrRequestClient[REQUEST]->description ?></textarea>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group btn-group-rounded w-100">
-                                                    <button type="button" class="btn btn-primary btn-xs w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:3px;">
-                                                        <span class="caret">Modifier</span>
-                                                    </button>
-                                                    <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_REFUSED ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>&clientEmail=<?= $arrRequestClient[CLIENT]->email ?>">Refusée</a>
-                                                        <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_PROCESSED ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>&clientEmail=<?= $arrRequestClient[CLIENT]->email ?>">Traitée</a>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <textarea rows="5" class=" form-control" readonly style="resize: none;"><?= $arrRequestClient[REQUEST]->description ?></textarea>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-rounded w-100">
+                                                        <button type="button" class="btn btn-primary btn-xs w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:3px;">
+                                                            <span class="caret">Modifier</span>
+                                                        </button>
+                                                        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_REFUSED ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>">Refusée</a>
+                                                            <a class="dropdown-item" href="adminContact.php?status=<?= STATUS_PROCESSED ?>&id_request=<?= $arrRequestClient[REQUEST]->id_request ?>">Traitée</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
+                                                </td>
 
 
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php
-            endforeach;
+                    <?php
+                endforeach;
+            } else {
+                echo "<h6>Aucune demande de réparation</h6>";
+             }
             ?>
 
 

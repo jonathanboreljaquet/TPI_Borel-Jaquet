@@ -1,17 +1,32 @@
 <?php
-//Session
+/*
+  Projet: SOS INFOBOBO
+  Description:  Fichier à inclure dans tous les fichiers, inclus
+                le démarrage de la session,
+                la classe de connexion à la base de données,
+                les classe conteneur,
+                les classes manager,
+                La configuration de Swift Mailer,
+                Les constantes.
+
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
+
+//Démarrage de la session
 session_start();
 
-//Database
+//Classe de connexion à la base de données
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/db/database.php';
 
-//Class
+//Classe conteneur
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/Client.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/Opinion.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/About.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/Request.php';
 
-//Manager
+//Classe Manager
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/UserManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/OpinionManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/AboutManager.php';
@@ -21,51 +36,57 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/StyleManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/EventManager.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/MailerManager.php';
 
-//SwiftMailer
+//Swift Mailer
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/config/mailparam.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/lib/swiftmailer5/lib/swift_required.php';
 
-//Constante
+//Constantes
+
+//Index pour tableau d'objet CLIENT-REQUEST
 const CLIENT = 0;
 const REQUEST = 1;
 
+//Statut d'une demande de réparation informatique
 const STATUS_OPEN = "OUVERTE";
 const STATUS_IN_PROGRESS = "ENCOURS";
 const STATUS_PROCESSED = "TRAITEE";
 const STATUS_REFUSED = "REFUSEE";
 
-const PAGE_ABOUT = "about.php";
+//Lien de toutes les vues du site
+const PAGE_ABOUT = "index.php";
 const PAGE_CONTACT = "contact.php";
 const PAGE_OPINION = "opinion.php";
 const PAGE_CONNECTION = "connection.php";
-const PAGE_ADMIN_ABOUT = "adminOpinion.php";
+const PAGE_ADMIN_ABOUT = "aboutUpdate.php";
+const PAGE_ADMIN_OPINION = "adminOpinion.php";
 const PAGE_ADMIN_CONTACT = "adminContact.php";
 const PAGE_ADMIN_STATISTIC = "adminStatistic.php";
 const PAGE_ADMIN_CALENDAR = "adminCalendar.php";
 
-const EVENT_TYPE_GIVE = "REDD";
-const EVENT_TYPE_RETURN = "RECUP";
-
-
+//Destinataire et message de l'envoi d'email lors de la création d'une demande de réparation informatique
 const RECEIVER_MAIL_REQUEST_ADD = "infoboboTPI@gmail.com";
 const SUBJECT_MAIL_REQUEST_ADD = "[INFOBOBO.CH] Nouvelle demande de réparation";
 const MESSAGE_MAIL_REQUEST_ADD = "Une nouvelle demande de réparation informatique vient d'être envoyé, 
                                   consulter l'administration du site <a href='infobobo.ch'>infobobo.ch</a> pour plus d'informations.";
 
+
+//Destinataire et message de l'envoi d'email lors du changement de statut d'une demande de réparation informatique
 const SUBJECT_MAIL_REQUEST_STATUS_UPDATE = "[INFOBOBO.CH] Réponse de la demande de réparation informatique";
 const MESSAGE_MAIL_REQUEST_STATUS_UPDATE = "Bonjour et merci d'avoir choisis Infobobo pour votre réparation informatique.
                                             Le statut de votre demande de réparation informatique est passé à ";
 
+//Type d'alerte Bootstrap
 const ALERT_TYPE_SUCCESS = "success";
 const ALERT_TYPE_FAILED = "danger";
 
+//Tableau permettant la traduction BDD->Lisible des statuts de demande
 $arrConstStatus = array(
     STATUS_OPEN => "Ouverte",
     STATUS_IN_PROGRESS => "En cours",
     STATUS_PROCESSED => "Traitée",
     STATUS_REFUSED => "Refusée"
 );
-
+//Tableau des mois pour l'affichage des statistiques 
 $arrMonth = array(
     1 => "Janvier",
     2 => "Février",

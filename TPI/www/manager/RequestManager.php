@@ -1,4 +1,12 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe RequestManager contenant les fonctions en rapport avec les demandes de réparation 
+               informatique créées par les clients, plus précisément de la table "demandes".
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
 class RequestManager
 {
     /**
@@ -36,7 +44,7 @@ class RequestManager
         }
     }
     /**
-     * Récupère toutes les demandes de réparation de la base de données.
+     * Récupère toutes les demandes de réparation informatique avec les informations des clients les ayant créés de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client[],Request[]] $arrRequest Retourne un tableau contenant des tableaux d'objet Client et Request
@@ -72,6 +80,45 @@ class RequestManager
                 array_push($arrRequest, $arrClientRequest);
             }
             return $arrRequest;
+        } catch (Exception $e) {
+            return FALSE;
+        }
+    }
+    /**
+     * Récupère une demande de réparation informatique ainsi que le client l'ayant créé de la base de données.
+     *
+     * @param string $id_request L'id de la demande
+     * 
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return array[Client,Request] Retourne un tableau contenant un objet Client et Request
+     *                               ou FALSE s'il y a un problème
+     */
+    public static function GetRequestById($id_request)
+    {
+        $sql = "SELECT clients.id_client,demandes.id_demande, nom, prenom, email,telephone,description,statut
+                FROM clients, demandes
+                WHERE clients.id_client = demandes.id_client and demandes.id_demande =:id_request ";
+        $arrClientRequest = array();
+        try {
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':id_request', $id_request, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $c = new Client();
+                $c->id_client = intval($result["id_client"]);
+                $c->firstName = $result["nom"];
+                $c->secondName = $result["prenom"];
+                $c->email = $result["email"];
+                $c->phoneNumber = $result["telephone"];
+                array_push($arrClientRequest, $c);
+
+                $r = new Request();
+                $r->id_request = intval($result["id_demande"]);
+                $r->id_client = intval($result["id_client"]);
+                $r->description = $result["description"];
+                $r->status = $result["statut"];
+                array_push($arrClientRequest, $r);
+            return $arrClientRequest;
         } catch (Exception $e) {
             return FALSE;
         }
@@ -152,11 +199,11 @@ class RequestManager
      */
     public static  function GetProcessedRequestOrderByMonthAndYear($year)
     {
-        $sql = "SELECT MONTH( e.date ) AS month, YEAR( e.date ) AS year, COUNT( * ) as nbRequest
-                FROM bj_tpi_bd.demandes as d, bj_tpi_bd.evenement as e
-                WHERE d.id_demande = e.id_demande and d.statut ='TRAITEE' and YEAR( e.date ) =:year
-                GROUP BY year, month
-                ORDER BY month ASC";
+        $sql = "SELECT MONTH( e.date_fin ) AS month, YEAR( e.date_fin ) AS year, COUNT( * ) as nbRequest
+        FROM bj_tpi_bd.demandes as d, bj_tpi_bd.evenement as e
+        WHERE d.id_demande = e.id_demande and d.statut ='TRAITEE' and YEAR( e.date_fin ) =:year
+        GROUP BY year, month
+        ORDER BY month ASC";
         try {
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':year', $year, PDO::PARAM_INT);

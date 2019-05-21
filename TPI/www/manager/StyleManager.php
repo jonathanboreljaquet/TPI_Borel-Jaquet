@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe StyleManager contenant les fonctions permettant de rendre le site plus esthétique et lisible.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
 class StyleManager
 {
     /**
@@ -31,7 +38,7 @@ class StyleManager
      *   
      * @param string $date La date à modifier
      * 
-     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @author Projet ProVélo École Entreprise
      * @return string Retourne la date en format => 10 septembre 2019
      */
     public static function SqlDateToWritten($date)
@@ -45,6 +52,15 @@ class StyleManager
         $day .= ($day < 2);
         return "$day $arrMonth[$month] $year";
     }
+    /**
+     * Affiche un message d'erreur ou de confirmation avec Bootstrap.
+     *   
+     * @param string $type Le type du message [succes/danger]
+     * @param string $message Le message à afficher
+     * 
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return string une balise div d'alert avec Bootstrap
+     */
     public static function ShowAlert($type, $message)
     {
         switch ($type) {
@@ -55,7 +71,7 @@ class StyleManager
                 echo "<div class='alert alert-danger mb-0' role='alert'>".$message."</div>";
                 break;
             default:
-                echo "<div class='alert alert-danger mb-0' role='alert'>Un problème est survenue</div>";
+                return false;
         }
     }
 }

@@ -1,4 +1,12 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Classe EventManager contenant les fonctions en rapport avec les rendez-vous créées,
+               plus préciséement de la table "evenement".
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
 class EventManager
 {
     /**

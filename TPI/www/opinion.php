@@ -1,4 +1,11 @@
 <?php
+/*
+  Projet: SOS INFOBOBO
+  Description: Page de création d'avis pour le client.
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
 
 $arrOpinion = OpinionManager::GetOpinionValidate();
@@ -7,13 +14,12 @@ if (isset($_POST["btnSendOpinion"])) {
     if (!empty($_POST["opinionComment"])) {
         $comment = filter_input(INPUT_POST, "opinionComment", FILTER_SANITIZE_STRING);
         if (OpinionManager::AddOpinion($comment)) {
-            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Votre avis est en attente de validation");
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Votre avis est en attente de validation");
         } else {
-            StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Avis invalide");
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Avis invalide");
         }
-    }
-    else{
-        StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Le champ commentaire n'a pas été rempli");
+    } else {
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Le champ commentaire n'a pas été rempli");
     }
 }
 ?>
@@ -22,7 +28,7 @@ if (isset($_POST["btnSendOpinion"])) {
 
 <head>
     <title>Avis</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body style="background-color: #272727;">
@@ -48,24 +54,28 @@ if (isset($_POST["btnSendOpinion"])) {
                     <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 </div>
                 <?php
-                foreach ($arrOpinion as $opinion) :
-                    ?>
-                    <div class="row justify-content-center">
-                        <div class="col-12 media border-bottom border-dark  mb-2">
-                            <div class="media-body">
-                                <p class="text-justify mb-1">
-                                    <?= htmlspecialchars_decode($opinion->comment) ?>
-                                </p>
-                                <div class="row justify-content-end">
-                                    <div class="col-md-4 col-lg-2">
-                                        <h5><?= StyleManager::SqlDateToWritten($opinion->date);  ?></h5>
+                if (!empty($arrOpinion)) {
+                    foreach ($arrOpinion as $opinion) :
+                        ?>
+                        <div class="row justify-content-center">
+                            <div class="col-12 media border-bottom border-dark  mb-2">
+                                <div class="media-body">
+                                    <p class="text-justify mb-1">
+                                        <?= htmlspecialchars_decode($opinion->comment) ?>
+                                    </p>
+                                    <div class="row justify-content-end">
+                                        <div class="col-md-4 col-lg-2">
+                                            <h5><?= StyleManager::SqlDateToWritten($opinion->date);  ?></h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php
-            endforeach;
+                    <?php
+                endforeach;
+            } else {
+                echo "<h6>Aucun avis validé</h6>";
+            }
             ?>
             </div>
         </div>
