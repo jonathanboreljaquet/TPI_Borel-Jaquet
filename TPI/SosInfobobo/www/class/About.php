@@ -8,7 +8,7 @@
  */
 /**
  * @brief	Objet About
- * @remark  Cet objet est utilisé comme conteneur en référence avec la table infos_dynamiques
+ * @remark  Cet objet est utilisé comme conteneur en référence avec la table "infos_dynamiques".
  * 
  *          Exemple d'utilisation 1
  *          $a = new About();

@@ -1,7 +1,7 @@
 <?php
 /*
   Projet: SOS INFOBOBO
-  Description: Classe EventManager contenant les fonctions en rapport avec les rendez-vous créées,
+  Description: Classe EventManager contenant les fonctions en rapport avec les événements créés par le réparateur,
                plus préciséement de la table "evenement".
   Auteur: Borel-Jaquet Jonathan
   Version: 1.0
@@ -13,8 +13,8 @@ class EventManager
      * Enregistre un événement et modifie le statut d'une demande dans la base de données.
      *
      * @param string $id_request L'identifiant de la demande
-     * @param string $dateEventStart La date de début de l'évenement
-     * @param string $dateEventEnd La date de fin de l'évevement
+     * @param string $dateEventStart La date de début de l'événement
+     * @param string $dateEventEnd La date de fin de l'événement
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return bool Retourne TRUE ou FALSE s'il y a un problème
@@ -45,7 +45,8 @@ class EventManager
      *
      * @throws bool Retourne FALSE s'il y a un problème
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
-     * @return string Retourne une chaine contenant la représentation JSON des événements ou FALSE s'il y a un problème
+     * @return string Retourne une chaîne de caractères contenant la représentation JSON des événements 
+     *                ou FALSE s'il y a un problème
      */
     public static function GetAllEventFormatJSON()
     {

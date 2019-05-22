@@ -11,7 +11,7 @@ class StyleManager
     /**
      * Retourne la bonne couleur pour un statut.
      * 
-     * @param string $status Le statut choisit
+     * @param string $status Le statut choisi
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return string $color Retourne la couleur du statut
@@ -34,7 +34,7 @@ class StyleManager
         return $color;
     }
     /**
-     * Retourne le bon format d'une date récupéré en base de données.
+     * Retourne le bon format d'une date récupérée en base de données.
      *   
      * @param string $date La date à modifier
      * 
@@ -55,7 +55,7 @@ class StyleManager
     /**
      * Affiche un message d'erreur ou de confirmation avec Bootstrap.
      *   
-     * @param string $type Le type du message [success/danger]
+     * @param string $type Le type de message à afficher [success/danger]
      * @param string $message Le message à afficher
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>

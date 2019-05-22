@@ -14,16 +14,19 @@ Parler de la classe EDatabase /DONE
 Ajout des nouvelles fonctions dans la documentation /DONE
 
 
-Planning effectif /LOOK PEIRY CONCLUSION
+Planning effectif /DONE
 
-Ecrire le résumé
+----------------------------------------------------------------------
+Ecrire le résumé //EN COURS
+----------------------------------------------------------------------
 
-MODELE PHISIQUE FINAL //ENTRAIN DE LE FAIRE
+MODELE PHISIQUE FINAL //DONE
 
-Glossaire
-
+----------------------------------------------------------------------
+Glossaire//EN COURS
+----------------------------------------------------------------------
 TESTER MAIL /DONE
 
 créer plusieurs réparateur et afficher et modifier leurs informations personnelles.
 Le client peut choisir quel réparateur il veut contacter et peux choisir pour qui
-il veut poser un avis
+il veut poser un avis /DONE

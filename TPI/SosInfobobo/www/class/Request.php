@@ -8,7 +8,7 @@
  */
 /**
  * @brief	Objet Request
- * @remark  Cet objet est utilisé comme conteneur en référence avec la table demandes
+ * @remark  Cet objet est utilisé comme conteneur en référence avec la table demandes.
  * 
  *          Exemple d'utilisation 1
  *          $r = new Request();

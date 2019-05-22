@@ -1,7 +1,7 @@
 <?php
 /*
   Projet: SOS INFOBOBO
-  Description: Page de création de demande de réparation informatique pour le client.
+  Description: Page de création d'une demande de réparation informatique pour le client.
   Auteur: Borel-Jaquet Jonathan
   Version: 1.0
   Date: Mai 2019

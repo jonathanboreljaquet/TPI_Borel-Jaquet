@@ -8,7 +8,7 @@
  */
 /**
  * @brief	Objet Opinion
- * @remark  Cet objet est utilisé comme conteneur en référence avec la table avis
+ * @remark  Cet objet est utilisé comme conteneur en référence avec la table avis.
  * 
  *          Exemple d'utilisation 1
  *          $o = new Opinion();
@@ -28,8 +28,8 @@ class Opinion
 	 * @brief	Le Constructor appelé au moment de la création de l'objet ex: new Opinion();
 	 * @param InId_opinion			L'identifant de l'avis. (Optionel) Defaut 0
 	 * @param InDate				La date de l'avis. (Optionel) Defaut ""
-	 * @param InComment	    		Le commentaire soumit par le client. (Optionel) Defaut ""
-	 * @param InIs_validate	    	Variable indiquant si l'avis à été validé ou non. (Optionel) Defaut FALSE
+	 * @param InComment	    		Le commentaire soumis par le client. (Optionel) Defaut ""
+	 * @param InIs_validate	    	Variable indiquant si l'avis a été validé ou non. (Optionel) Defaut FALSE
 	 * @param InId_repairer			L'identifiant du réparateur. (Optionel) Defaut 0
 	  */
 	public function __construct($InId_opinion = 0, $InDate = null, $InComment = "", $InIs_validate = FALSE, $InId_repairer = 0)
@@ -49,11 +49,11 @@ class Opinion
 	 */
 	public $date;
 	/**
-	 * @var string Le commentaire soumit par le client
+	 * @var string Le commentaire soumis par le client
 	 */
 	public $comment;
 	/**
-	 * @var bool Variable indiquant si l'avis à été validé ou non
+	 * @var bool Variable indiquant si l'avis a été validé ou non
 	 */
 	public $is_validate;
 	/**

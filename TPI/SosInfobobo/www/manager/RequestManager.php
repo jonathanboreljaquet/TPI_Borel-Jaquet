@@ -2,7 +2,7 @@
 /*
   Projet: SOS INFOBOBO
   Description: Classe RequestManager contenant les fonctions en rapport avec les demandes de réparation 
-               informatique créées par les clients, plus précisément de la table "demandes".
+               informatiques créées par les clients, plus précisément de la table "demandes".
   Auteur: Borel-Jaquet Jonathan
   Version: 1.0
   Date: Mai 2019
@@ -15,8 +15,8 @@ class RequestManager
      * @param string $firstName Le nom du client 
      * @param string $secondName Le prénom du client
      * @param string $email L'email du client
-     * @param string $phoneNumber Le numéro de téléphonme du client
-     * @param string $description La description de la demande de réparation
+     * @param string $phoneNumber Le numéro de téléphone du client
+     * @param string $description La description du problème informatique du client
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return bool Retourne TRUE ou FALSE s'il y a un problème
@@ -44,7 +44,7 @@ class RequestManager
         }
     }
     /**
-     * Récupère toutes les demandes de réparation informatique avec les informations des clients les ayant créés de la base de données.
+     * Récupère toutes les demandes de réparation informatique de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client[],Request[]] $arrRequest Retourne un tableau contenant des tableaux d'objet Client et Request
@@ -85,10 +85,10 @@ class RequestManager
         }
     }
     /**
-     * Récupère une demande de réparation informatique avec les informations du client l'ayant créé de la base de données
-     * grâce à l'identifiant d'une demande.
+     * Récupère une demande de réparation informatique avec les informations du client l'ayant créé 
+     * de la base de données grâce à son identifiant.
      *
-     * @param string $id_request L’identifiant de la demande
+     * @param string $id_request L'identifiant de la demande
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client,Request] Retourne un tableau contenant un objet Client et Request
@@ -125,9 +125,9 @@ class RequestManager
         }
     }
     /**
-     * Modifie le statut d'une demande de réparation informatique.
+     * Modifie le statut d'une demande de réparation informatique grâce à son identifiant.
      *
-     * @param string $id_request L'id de la demande
+     * @param string $id_request L'identifiant de la demande
      * @param string $status Le nouveau statut de la demande
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
@@ -149,7 +149,7 @@ class RequestManager
         }
     }
     /**
-     * Récupère toutes les demandes de réparation informatique de statut "ouverte" de la base de données.
+     * Récupère toutes les demandes de réparation informatique de statut "Ouverte" de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
@@ -190,9 +190,9 @@ class RequestManager
         }
     }
     /**
-     * Récupère les demandes de réparation informatique de statut "traitée" de la base de données triée par mois et par année.
+     * Récupère toutes les demandes de réparation informatique de statut "Traitée" de la base de données triée par mois et par année.
      *
-     * @param string $year L'année choisit
+     * @param string $year L'année choisie
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array $result Retourne un tableau associatif représentant le nombre de réparation 

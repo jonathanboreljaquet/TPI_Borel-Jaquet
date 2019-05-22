@@ -8,7 +8,7 @@
  */
 /**
  * @brief	Objet Client
- * @remark  Cet objet est utilisé comme conteneur en référence avec la table clients
+ * @remark  Cet objet est utilisé comme conteneur en référence avec la table clients.
  * 
  *          Exemple d'utilisation 1
  *          $c = new Client();
@@ -28,7 +28,7 @@ class Client
 	 * @brief	Le Constructor appelé au moment de la création de l'objet ex: new Client();
 	 * @param InId_client	L'identifant du client. (Optionel) Defaut 0
 	 * @param InFirstName   Le nom du client. (Optionel) Defaut ""
-	 * @param InSecondName	Le prenom du client. (Optionel) Defaut ""
+	 * @param InSecondName	Le prénom du client. (Optionel) Defaut ""
 	 * @param InEmail	    L'email du client. (Optionel) Defaut ""
 	 * @param InPhoneNumber	Le numéro de téléphone du client. (Optionel) Defaut ""
 	  */

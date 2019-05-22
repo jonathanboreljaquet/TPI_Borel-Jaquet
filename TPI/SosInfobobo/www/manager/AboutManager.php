@@ -2,7 +2,7 @@
 /*
   Projet: SOS INFOBOBO
   Description: Classe AboutManager contenant les fonctions en rapport avec les informations personnelles du réparateur,
-               plus préciséement de la table "infos_dynamaique".
+               plus préciséement de la table "infos_dynamiques".
   Auteur: Borel-Jaquet Jonathan
   Version: 1.0
   Date: Mai 2019
