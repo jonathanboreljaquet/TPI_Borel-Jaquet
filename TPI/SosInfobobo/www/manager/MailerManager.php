@@ -10,11 +10,13 @@
 class MailerManager
 {
     /**
-     * Envoie un mail en utilisant la librairie Swift Mailer.
+     * Envoie un email au réparateur décrivant les informations de la demande du client en utilisant la librairie Swift Mailer
      *
-     * @param string $receiver L'adresse email de la personne qui reçoit l'email
-     * @param string $subject L'objet du mail
-     * @param string $textMessage Le contenue du mail
+     * @param string $contactFirstName Le nom du client
+     * @param string $contactSecondName Le prénom du client
+     * @param string $contactEmail L'email du client
+     * @param string $contactPhoneNumber Le numéro de téléphone du client
+     * @param string $contactDescription La description du problème informatique du client
      * 
      * @throws Swift_TransportException
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
@@ -26,20 +28,17 @@ class MailerManager
             ->setUsername(EMAIL_USERNAME)
             ->setPassword(EMAIL_PASSWORD);
         try {
-            // On crée un nouvelle instance de mail en utilisant le transport créé précédemment
+            // Création d'une nouvelle instance de mail en utilisant le transport créé précédemment
             $mailer = Swift_Mailer::newInstance($transport);
-            // On crée un nouveau message
+            // Création du message
             $message = Swift_Message::newInstance();
             // Le sujet du message
-
             $message->setSubject("[SOS INFOBOBO] Nouvelle demande de réparation reçu");
             // Qui envoie le message 
             $message->setFrom(array('infoboboTPI@gmail.ch' => 'SOS Infobobo réparation informatique'));
             // A qui on envoie le message
             $message->setTo(array(EMAIL_USERNAME));
-
-            // Un petit message html
-            // On peut bien évidemment avoir un message texte
+            //Création du message html à envoyer
             $body =
                 "<html>" .
                 " <head></head>" .
@@ -70,16 +69,28 @@ class MailerManager
                 "</table>" .
                 " </body>" .
                 "</html>";
-            // On assigne le message et on dit de quel type. Dans notre exemple c'est du html
+            //Asignation du message et tu type à envoyer
             $message->setBody($body, 'text/html');
-            // Maintenant il suffit d'envoyer le message
-            $result = $mailer->send($message);
+            //Envoie du mail
+            $mailer->send($message);
             return true;
         } catch (Swift_TransportException $e) {
             echo "Problème d'envoi de message: " . $e->getMessage();
             exit();
         }
     }
+    /**
+     * Envoie un email au client décrivant les informations de sa demande et le nouveau statut
+     * attribué à celle-ci en utilisant la librairie Swift Mailer.
+     *
+     * @param string $newStatus Le nouveau statut de la demande
+     * @param string $client Un objet Client
+     * @param string $request Un objet Request
+     * 
+     * @throws Swift_TransportException
+     * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
+     * @return bool Retourne TRUE si l'email a bien été envoyé
+     */
     public static function SendMailToClient($newStatus, $client,$request)
     {
         $transport = Swift_SmtpTransport::newInstance(EMAIL_SERVER, EMAIL_PORT, EMAIL_TRANS)
@@ -88,24 +99,22 @@ class MailerManager
         try {
             // On crée un nouvelle instance de mail en utilisant le transport créé précédemment
             $mailer = Swift_Mailer::newInstance($transport);
-            // On crée un nouveau message
+            // Création du message
             $message = Swift_Message::newInstance();
             // Le sujet du message
-
             $message->setSubject("[SOS INFOBOBO] Changement de statut");
             // Qui envoie le message 
             $message->setFrom(array('infoboboTPI@gmail.ch' => 'SOS Infobobo réparation informatique'));
             // A qui on envoie le message
             $message->setTo(array($client->email));
 
-            // Un petit message html
-            // On peut bien évidemment avoir un message texte
+            //Création du message html à envoyer
             $body =
                 "<html>" .
                 " <head></head>" .
                 " <body>" .
                 "  <p>Bonjour,</p>" .
-                "  <p>Le statut de votre demande de réparation informatique a été modifié en : ".strtolower($newStatus)." </p>" .
+                "  <p>Le statut de votre demande de réparation informatique a été modifié en : ".$newStatus." </p>" .
                 "  <h4>Details de la demande de réparation informatique :</h4>" .
                 "<table border='1'>" .
                     "<tr>" .
@@ -131,10 +140,10 @@ class MailerManager
                 "</table>" .
                 " </body>" .
                 "</html>";
-            // On assigne le message et on dit de quel type. Dans notre exemple c'est du html
+            //Asignation du message et tu type à envoyer
             $message->setBody($body, 'text/html');
-            // Maintenant il suffit d'envoyer le message
-            $result = $mailer->send($message);
+            //Envoie du mail
+            $mailer->send($message);
             return true;
         } catch (Swift_TransportException $e) {
             echo "Problème d'envoi de message: " . $e->getMessage();

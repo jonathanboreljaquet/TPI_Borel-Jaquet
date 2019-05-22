@@ -17,7 +17,7 @@ if (isset($_GET["saveEvent"])) {
         $arrRequestClientById = RequestManager::GetRequestById($id_request);
         if (EventManager::AddEvent($id_request, $eventDateStart, $eventDateEnd)) {
             StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Rendez-vous créé");
-            MailerManager::SendMailToClient(STATUS_IN_PROGRESS, $arrRequestClientById[CLIENT],$arrRequestClientById[REQUEST]);
+            MailerManager::SendMailToClient($arrConstStatus[STATUS_IN_PROGRESS], $arrRequestClientById[CLIENT],$arrRequestClientById[REQUEST]);
         } else {
             StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Problème lors de l'insertion du rendez-vous");
         }
@@ -50,16 +50,16 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
     <title>Calendrier</title>
 </head>
 
-<body style="background-color: #272727;">
+<body>
     <?php
     include "inc/navBar.php";
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-sm-10 col-lg-10 col-md-10 border justify-content-center border-primary rounded mt-4 p-4 " style="background-color: #E0E0E0;">
+            <div class="section col-sm-10 col-lg-10 col-md-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center mb-2">
                     <h4>Planification de rendez-vous</h4>
-                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                    <hr/>
                 </div>
                 <div class="row">
                     <div class="col-lg-7 col-md-12 col-sm-12">
@@ -94,7 +94,7 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
                                             <td><?= $request[REQUEST]->id_request ?></td>
                                             <td><?= $request[CLIENT]->firstName ?></td>
                                             <td><?= $request[CLIENT]->secondName ?></td>
-                                            <td> <textarea rows="5" class=" form-control" readonly style="resize: none;"><?= $request[REQUEST]->description ?></textarea></td>
+                                            <td> <textarea rows="5" class=" form-control" readonly><?= $request[REQUEST]->description ?></textarea></td>
 
                                         </tr>
                                     </tbody>

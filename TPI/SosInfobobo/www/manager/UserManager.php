@@ -44,7 +44,7 @@ class UserManager
         }
     }
     /**
-     * Vérifie si le réparateur est connecté ou non
+     * Vérifie si l'utilisateur est connecté ou non
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return bool Redirige l'utilisateur vers la page d'accueil si l'utilisateur n'est pas connecté
@@ -52,7 +52,7 @@ class UserManager
     public static function VerificateRoleUser()
     {
         if (!isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] != true) {
-            header("location: about.php");
+            header("location: index.php");
         }
     }
 }

@@ -75,8 +75,7 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
                                         <td><?= $request[REQUEST]->id_request ?></td>
                                         <td><?= $request[CLIENT]->firstName ?></td>
                                         <td><?= $request[CLIENT]->secondName ?></td>
-                                        <td> <textarea rows="5" class=" form-control" readonly style="resize: none;"><?= $request[REQUEST]->description ?></textarea></td>
-
+                                        <td> <textarea rows="5" class=" form-control" readonly><?= $request[REQUEST]->description ?></textarea></td>
                                     </tr>
                                 </tbody>
                             </table>

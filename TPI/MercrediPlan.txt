@@ -1,14 +1,29 @@
 créer les derniers fichiers de tests
 les corriger
 
-création d'un fichier css
+création d'un fichier css /DONE
 
 
 
 [DOC]
 
-Parler de la classe EDatabase
+Modifier l'arborescence /DONE
 
-Ajout des nouvelles fonctions dans la documentation
+Parler de la classe EDatabase /DONE
+
+Ajout des nouvelles fonctions dans la documentation /DONE
+
+
+Planning effectif /LOOK PEIRY CONCLUSION
 
 Ecrire le résumé
+
+MODELE PHISIQUE FINAL //ENTRAIN DE LE FAIRE
+
+Glossaire
+
+TESTER MAIL /DONE
+
+créer plusieurs réparateur et afficher et modifier leurs informations personnelles.
+Le client peut choisir quel réparateur il veut contacter et peux choisir pour qui
+il veut poser un avis

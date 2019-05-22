@@ -10,7 +10,7 @@
 class RequestManager
 {
     /**
-     * Enregistre une demande de réparation et un client dans la base de données.
+     * Enregistre une demande de réparation informatique et le client l'ayant créé dans la base de données.
      *
      * @param string $firstName Le nom du client 
      * @param string $secondName Le prénom du client
@@ -85,9 +85,10 @@ class RequestManager
         }
     }
     /**
-     * Récupère une demande de réparation informatique ainsi que le client l'ayant créé de la base de données.
+     * Récupère une demande de réparation informatique avec les informations du client l'ayant créé de la base de données
+     * grâce à l'identifiant d'une demande.
      *
-     * @param string $id_request L'id de la demande
+     * @param string $id_request L’identifiant de la demande
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client,Request] Retourne un tableau contenant un objet Client et Request
@@ -124,7 +125,7 @@ class RequestManager
         }
     }
     /**
-     * Modifie le statut d'une demande de réparation.
+     * Modifie le statut d'une demande de réparation informatique.
      *
      * @param string $id_request L'id de la demande
      * @param string $status Le nouveau statut de la demande
@@ -148,7 +149,7 @@ class RequestManager
         }
     }
     /**
-     * Récupère toutes les demandes de réparation de statut "ouverte" de la base de données.
+     * Récupère toutes les demandes de réparation informatique de statut "ouverte" de la base de données.
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array[Client,Request] $arrRequest Retourne un tableau d'objet Client et Request
@@ -189,9 +190,9 @@ class RequestManager
         }
     }
     /**
-     * Récupère les demandes de statut "traitée" de la base de données triée par mois et par année.
+     * Récupère les demandes de réparation informatique de statut "traitée" de la base de données triée par mois et par année.
      *
-     * @param string $year L'année à afficher
+     * @param string $year L'année choisit
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return array $result Retourne un tableau associatif représentant le nombre de réparation 

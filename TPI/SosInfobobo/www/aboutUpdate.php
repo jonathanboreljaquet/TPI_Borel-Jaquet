@@ -6,7 +6,7 @@
   Version: 1.0
   Date: Mai 2019
  */
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
 
 
 UserManager::VerificateRoleUser();
@@ -37,16 +37,16 @@ $about = AboutManager::GetAboutInformation();
     <?php include "inc/header.php" ?>
 </head>
 
-<body style="background-color: #272727;">
+<body>
     <?php
     include "inc/navBar.php";
     ?>
     <div class="container-fluid">
-        <div class="row justify-content-center" style="color: black;">
-            <div class="col-md-4 col-lg-4 border justify-content-center border-primary rounded mt-4 p-4" style="background-color: #E0E0E0;">
+        <div class="row justify-content-center">
+            <div class="section col-md-4 col-lg-4 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center">
                     <h1>Modification de mes informations</h1>
-                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                    <hr/>
                 </div>
                 <div class="row justify-content-center">
                     <form action="#" method="POST" class="w-100">
@@ -64,9 +64,10 @@ $about = AboutManager::GetAboutInformation();
                         </div>
                         <div class="form-group">
                             <label for="newAboutDescription">Description</label>
-                            <textarea class="form-control" style="resize:none" name="newAboutDescription" id="newAboutDescription" rows="4"><?= $about->description  ?></textarea>
+                            <textarea class="form-control" name="newAboutDescription" id="newAboutDescription" rows="4"><?= $about->description  ?></textarea>
                         </div>
-                        <button type="submit" name="btnUpdateAbout" class="btn btn-primary">Enregistrer</button>
+                        <button type="submit" name="btnUpdateAbout" class="btn btn-primary">Modifier</button>
+                        <small id="emailHelp" class="form-text text-muted">Tous les champs sont obligatoires.</small>
                     </form>
                 </div>
 

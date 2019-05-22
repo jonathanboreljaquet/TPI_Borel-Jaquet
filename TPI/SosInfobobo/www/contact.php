@@ -35,16 +35,16 @@ if (isset($_POST["btnSendRequest"])) {
     <?php include "inc/header.php" ?>
 </head>
 
-<body style="background-color: #272727;">
+<body>
     <?php
     include "inc/navBar.php";
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="ccol-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4 " style="background-color: #E0E0E0;">
+            <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center">
                     <h4>Faire une demande de réparation</h4>
-                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                    <hr/>
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-lg-4">
@@ -71,7 +71,7 @@ if (isset($_POST["btnSendRequest"])) {
                     <div class="col-12">
                         <div class="form-group">
                             <label for="contactDescription">Description du problème</label>
-                            <textarea class="form-control" style="resize:none" name="contactDescription" id="contactDescription" rows="10"><?= ((isset($_POST["contactDescription"]) ? $_POST["contactDescription"] : "")) ?></textarea>
+                            <textarea class="form-control" name="contactDescription" id="contactDescription" rows="10"><?= ((isset($_POST["contactDescription"]) ? $_POST["contactDescription"] : "")) ?></textarea>
                         </div>
                     </div>
                 </div>

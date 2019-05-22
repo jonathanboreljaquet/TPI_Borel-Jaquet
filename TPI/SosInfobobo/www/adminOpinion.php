@@ -13,6 +13,7 @@ UserManager::VerificateRoleUser();
 if (isset($_GET["type"]) && isset($_GET["id_opinion"])) {
     $type = filter_input(INPUT_GET, "type", FILTER_SANITIZE_STRING);
     $id_opinion = filter_input(INPUT_GET, "id_opinion", FILTER_SANITIZE_NUMBER_INT);
+    // Est-ce accepté ?
     if ($type == "accept") {
         if (OpinionManager::ValidateOpinionById($id_opinion)) {
             StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Avis validé");
@@ -38,16 +39,16 @@ $arrOpinion = OpinionManager::GetOpinionNotValidate();
     <?php include "inc/header.php" ?>
 </head>
 
-<body style="background-color: #272727;">
+<body>
     <?php
     include "inc/navBar.php";
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4 " style="background-color: #E0E0E0;">
+            <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center mb-2">
                     <h4>Avis en attente de validation</h4>
-                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                    <hr/>
                 </div>
                 <?php
                 if(!empty($arrOpinion)){

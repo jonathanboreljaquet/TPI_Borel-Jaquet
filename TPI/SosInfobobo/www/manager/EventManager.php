@@ -13,9 +13,8 @@ class EventManager
      * Enregistre un événement et modifie le statut d'une demande dans la base de données.
      *
      * @param string $id_request L'identifiant de la demande
-     * @param string $dateEvent La date de l'événement
-     * @param string $typeEvent Le type d'événement
-     * @param string $hourEvent L'heure de l'événement
+     * @param string $dateEventStart La date de début de l'évenement
+     * @param string $dateEventEnd La date de fin de l'évevement
      *
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>
      * @return bool Retourne TRUE ou FALSE s'il y a un problème

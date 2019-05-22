@@ -55,7 +55,7 @@ class StyleManager
     /**
      * Affiche un message d'erreur ou de confirmation avec Bootstrap.
      *   
-     * @param string $type Le type du message [succes/danger]
+     * @param string $type Le type du message [success/danger]
      * @param string $message Le message à afficher
      * 
      * @author Jonathan Borel-Jaquet <jonathan.brljq@eduge.ch>

@@ -1,0 +1,25 @@
+/*
+  Projet: SOS INFOBOBO
+  Description: Unique fichier css de base pour tout mon site WEB 
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    background-color: #272727;
+}
+.section{
+    background-color: #E0E0E0;
+}
+hr{
+    width: 100%;
+    color: black; 
+    height: 1px; 
+    background-color:black;
+}
+textarea{
+    resize: none;
+}
