@@ -6,7 +6,7 @@
   Version: 1.0
   Date: Mai 2019
  */
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
 
 
 if (isset($_POST["btnSendRequest"])) {

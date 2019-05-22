@@ -19,7 +19,7 @@ Il aura également la possibilité de modifier ses informations personnelles dan
 
 Comment installer et utiliser l'applciation WEB Sos Infobobo :
 
-1. Installer et faire fonctionner un serveur WEB, PHP et MySQL (Apache,EasyPhp,PhpMyAdmin, SQL, ect.)
+1. Installer et faire fonctionner un serveur WEB, PHP et MySQL (Apache,EasyPhp,PhpMyAdmin, MySQL, ect.)
 
 2. Ajouter à la racine de votre serveur WEB le dossier SosInfobobo
 
@@ -28,13 +28,14 @@ Comment installer et utiliser l'applciation WEB Sos Infobobo :
 
 	Exemple EasyPhp : C:/EasyPHP-DevServer/data/localweb/projects/SosInfobobo
 
-3. Importer le script sql "SOS_INFOBOBO_DB.sql"  dans votre editeur SQL (MySql Workbench, phpMyAdmin)
+3. Importer le script sql "SOS_INFOBOBO_DB.sql"  dans votre logiciel de gestion et 
+   d'administration de bases de données MySQL (MySql Workbench, phpMyAdmin)
 
 4. Configurer un serveur MySql 
 	3.1 Créer un utilisateur du nom de : BOREL_JAQUET_TPI
 	3.2 Avec un mot de passe : Super2019
 	3.4 Donner lui tout les droits sur la base de données "bj_tpi_bd" .
 
-5. Vous pouvez maintenant utilisé le site WEB en accédant à l'url : 124.0.0.1/SosInfobobo/www/
+5. Vous pouvez maintenant utiliser le site WEB en accédant à l'url : 124.0.0.1/SosInfobobo/www/
 --------------------------
 

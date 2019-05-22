@@ -6,7 +6,7 @@
   Version: 1.0
   Date: Mai 2019
  */
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
 
 UserManager::VerificateRoleUser();
 if (isset($_GET["saveEvent"])) {
@@ -32,7 +32,7 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
 <html lang="fr">
 
 <head>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/header.php'; ?>
+    <?php include "inc/header.php"; ?>
     <!-- Plugins css pour un affichage correct des différents plugins utilisés-->
     <link href='lib/fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet' />
     <link href='lib/fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet' />

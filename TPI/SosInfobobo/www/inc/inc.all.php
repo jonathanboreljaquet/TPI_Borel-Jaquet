@@ -18,27 +18,27 @@
 session_start();
 
 //Classe de connexion à la base de données
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/db/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/db/database.php';
 
 //Classe conteneur
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/Client.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/Opinion.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/About.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/class/Request.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/class/Client.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/class/Opinion.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/class/About.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/class/Request.php';
 
 //Classe Manager
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/UserManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/OpinionManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/AboutManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/ClientManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/RequestManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/StyleManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/EventManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/manager/MailerManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/UserManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/OpinionManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/AboutManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/ClientManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/RequestManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/StyleManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/EventManager.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/manager/MailerManager.php';
 
 //Swift Mailer
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/config/mailparam.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/lib/swiftmailer5/lib/swift_required.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/config/mailparam.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/lib/swiftmailer5/lib/swift_required.php';
 
 //Constantes
 

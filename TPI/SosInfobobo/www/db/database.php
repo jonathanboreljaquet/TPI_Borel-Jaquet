@@ -9,7 +9,7 @@
 /**
  * @remark Mettre le bon chemin d'accès à votre fichier contenant les constantes
  */
-require_once $_SERVER['DOCUMENT_ROOT'].'/www/config/conparam.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/SosInfobobo/www/config/conparam.php';
 /**
  * Retourne un objet PDO connecté à la base de données
  * @return \PDO

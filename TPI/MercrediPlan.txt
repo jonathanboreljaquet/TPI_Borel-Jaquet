@@ -1,0 +1,14 @@
+créer les derniers fichiers de tests
+les corriger
+
+création d'un fichier css
+
+
+
+[DOC]
+
+Parler de la classe EDatabase
+
+Ajout des nouvelles fonctions dans la documentation
+
+Ecrire le résumé
