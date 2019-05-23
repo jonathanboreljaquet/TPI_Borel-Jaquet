@@ -1,14 +1,16 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
-
-//Test de modification du champs statut de la table demandes.
-echo "Test d'update du champ statut de la table demandes en donnant l'id et le nouveau statut</br>";
-
-if(RequestManager::UpdateRequestStatusById(2,"REFUSEE"))
-{
-    echo "L'update à bien été faite</br>";
+/*
+  Projet: SOS INFOBOBO
+  Description: Fichier de test de la fonction UpdateRequestStatusById du manager RequestManager
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
+echo "Test de modification du statut d'une demande de réparation informatique grâce à son identifiant.<br/>";
+echo "Résultat :<br/>";
+if (RequestManager::UpdateRequestStatusById(24, "REFUSEE")) {
+  echo "L'update a bien fonctionné.";
+} else {
+  echo "L'update n'a pas fonctionné.";
 }
-else{
-    echo "L'update à pas été faite";
-}
-

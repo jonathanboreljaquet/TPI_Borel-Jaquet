@@ -7,7 +7,6 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
 UserManager::VerificateRoleUser();
 if (isset($_POST["btnShowStat"])) {
     $year = filter_input(INPUT_POST, "year", FILTER_SANITIZE_STRING);
@@ -15,7 +14,6 @@ if (isset($_POST["btnShowStat"])) {
 } else {
     $arrMonthStat = RequestManager::GetProcessedRequestOrderByMonthAndYear(date('Y'));
 }
-
 ?>
 <!doctype html>
 <html lang="fr">
@@ -26,15 +24,13 @@ if (isset($_POST["btnShowStat"])) {
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center mb-2">
                     <h4>Statistiques des réparations effectuées</h4>
-                    <hr/>
+                    <hr />
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-4">
@@ -59,16 +55,12 @@ if (isset($_POST["btnShowStat"])) {
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <?php foreach ($arrMonthStat as $request) : ?>
                                             <tr>
                                                 <td><?= $arrMonth[$request["month"]] ?></td>
                                                 <td><?= $request["nbRequest"] ?></td>
                                             </tr>
-
                                         <?php endforeach; ?>
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -82,7 +74,6 @@ if (isset($_POST["btnShowStat"])) {
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

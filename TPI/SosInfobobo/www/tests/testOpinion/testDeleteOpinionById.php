@@ -1,11 +1,16 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
-
-//Test de suppression d'un avis avec son Id
-echo "Test pour supprimer un avis<br>";
-if (OpinionManager::DeleteOpinionById(23)) {
-    echo "L'opinion a bien été supprimé";
+/*
+  Projet: SOS INFOBOBO
+  Description: Fichier de test de la fonction DeleteOpinionById du manager OpinionManager
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
+echo "Test de suppression d'un avis grâce à son identifiant dans la table 'avis'.<br/>";
+echo "Résultat :<br/>";
+if (OpinionManager::DeleteOpinionById(29)) {
+  echo "La supression a bien fonctionné.";
 } else {
-    echo "L'opinion n'a pas été supprimé";
+  echo "La supression n'a pas fonctionné.";
 }
-echo "-<br>";

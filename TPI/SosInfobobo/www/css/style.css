@@ -23,3 +23,18 @@ hr{
 textarea{
     resize: none;
 }
+/*
+CSS pour FullCalendar
+*/
+#calendar {
+    background-color: #bfbfbf;
+    color: black;
+}
+
+.fc-highlight {
+    background-color: #595959;
+}
+
+.fc-unthemed td.fc-today {
+    background-color: grey;
+}

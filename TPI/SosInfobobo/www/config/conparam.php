@@ -12,5 +12,3 @@ define('EDB_HOST', "127.0.0.1");
 define('EDB_PORT', "3306");
 define('EDB_USER', "BOREL_JAQUET_TPI");
 define('EDB_PASS', "Super2019");
-
-

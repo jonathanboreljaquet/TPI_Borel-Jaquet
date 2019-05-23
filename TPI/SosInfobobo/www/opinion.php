@@ -7,9 +7,7 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
 $arrOpinion = OpinionManager::GetOpinionValidate();
-
 if (isset($_POST["btnSendOpinion"])) {
     if (!empty($_POST["opinionComment"])) {
         $comment = filter_input(INPUT_POST, "opinionComment", FILTER_SANITIZE_STRING);
@@ -32,15 +30,13 @@ if (isset($_POST["btnSendOpinion"])) {
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center">
                     <h4>Votre avis m'intéresse</h4>
-                    <hr/>
+                    <hr />
                     <form class="col-12 m-0 p-0" action="#" method="post">
                         <div class="form-group">
                             <label for="opinionComment">Commentaire :</label>
@@ -51,7 +47,7 @@ if (isset($_POST["btnSendOpinion"])) {
                 </div>
                 <div class="row justify-content-center mb-2">
                     <h4>Les avis précédents</h4>
-                    <hr/>
+                    <hr />
                 </div>
                 <?php
                 if (!empty($arrOpinion)) {
@@ -80,8 +76,6 @@ if (isset($_POST["btnSendOpinion"])) {
             </div>
         </div>
     </div>
-    </div>
-
 </body>
 
 </html>

@@ -7,8 +7,6 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
-
 if (isset($_POST["btnSendRequest"])) {
     if (!empty($_POST["contactFirstName"]) && !empty($_POST["contactSecondName"]) && !empty($_POST["contactEmail"]) && !empty($_POST["contactPhoneNumber"]) && !empty($_POST["contactDescription"])) {
         $contactFirstName = filter_input(INPUT_POST, "contactFirstName", FILTER_SANITIZE_STRING);
@@ -18,12 +16,12 @@ if (isset($_POST["btnSendRequest"])) {
         $contactDescription = filter_input(INPUT_POST, "contactDescription", FILTER_SANITIZE_STRING);
         if (RequestManager::AddRequest($contactFirstName, $contactSecondName, $contactEmail, $contactPhoneNumber, $contactDescription)) {
             MailerManager::SendMailToRepairer($contactFirstName, $contactSecondName, $contactEmail, $contactPhoneNumber, $contactDescription);
-            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Votre demande de réparation informatique a été envoyée au réparateur");
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Votre demande de réparation informatique a été envoyée au réparateur");
         } else {
-            StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Demande invalide");
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Demande invalide");
         }
     } else {
-        StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Tous les champs n'ont pas été remplis");
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Tous les champs n'ont pas été remplis");
     }
 }
 ?>
@@ -36,15 +34,13 @@ if (isset($_POST["btnSendRequest"])) {
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center">
                     <h4>Faire une demande de réparation</h4>
-                    <hr/>
+                    <hr />
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-lg-4">
@@ -78,13 +74,9 @@ if (isset($_POST["btnSendRequest"])) {
                 <button type="submit" name="btnSendRequest" class="btn btn-primary">Envoyer</button>
                 <small id="emailHelp" class="form-text text-muted">Tous les champs sont obligatoires.</small>
                 </form>
-
-
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>

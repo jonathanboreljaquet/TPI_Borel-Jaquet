@@ -7,21 +7,18 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
 UserManager::VerificateRoleUser();
-
 if (isset($_GET["status"]) && isset($_GET["id_request"])) {
     $status = filter_input(INPUT_GET, "status", FILTER_SANITIZE_STRING);
     $id_request = filter_input(INPUT_GET, "id_request", FILTER_SANITIZE_NUMBER_INT);
     $arrRequestClientById = RequestManager::GetRequestById($id_request);
     if (RequestManager::UpdateRequestStatusById($id_request, $status)) {
-        MailerManager::SendMailToClient($arrConstStatus[$status], $arrRequestClientById[CLIENT],$arrRequestClientById[REQUEST]);
+        MailerManager::SendMailToClient($arrConstStatus[$status], $arrRequestClientById[CLIENT], $arrRequestClientById[REQUEST]);
         StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Statut de la demande bien modifié");
     } else {
         StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors du changement de statut de la demande");
     }
 }
-
 $arrRequest = RequestManager::GetAllRequest();
 ?>
 <!doctype html>
@@ -33,17 +30,14 @@ $arrRequest = RequestManager::GetAllRequest();
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center">
                     <h4>Listes des demandes de réparation</h4>
-                    <hr/>
+                    <hr />
                 </div>
-
                 <?php
                 if (!empty($arrRequest)) {
                     foreach ($arrRequest as $arrRequestClient) :
@@ -69,11 +63,10 @@ $arrRequest = RequestManager::GetAllRequest();
                                                 <td><?= $arrRequestClient[CLIENT]->email ?></td>
                                                 <td><?= $arrRequestClient[CLIENT]->phoneNumber ?></td>
                                                 <td style="color:<?= StyleManager::ColorStatus($arrRequestClient[REQUEST]->status) ?>;"><?= $arrConstStatus[$arrRequestClient[REQUEST]->status] ?></td>
-
                                             </tr>
                                             <tr>
                                                 <td colspan="5">
-                                                    <textarea rows="5" class=" form-control" readonly ><?= $arrRequestClient[REQUEST]->description ?></textarea>
+                                                    <textarea rows="5" class=" form-control" readonly><?= $arrRequestClient[REQUEST]->description ?></textarea>
                                                 </td>
                                                 <td>
                                                     <div class="btn-group btn-group-rounded w-100">
@@ -86,8 +79,6 @@ $arrRequest = RequestManager::GetAllRequest();
                                                         </div>
                                                     </div>
                                                 </td>
-
-
                                             </tr>
                                         </tbody>
                                     </table>
@@ -98,14 +89,10 @@ $arrRequest = RequestManager::GetAllRequest();
                 endforeach;
             } else {
                 echo "<h6>Aucune demande de réparation</h6>";
-             }
+            }
             ?>
-
-
             </div>
         </div>
-
-
 </body>
 
 </html>

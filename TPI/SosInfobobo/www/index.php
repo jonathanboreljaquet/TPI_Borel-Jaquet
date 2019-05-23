@@ -7,8 +7,6 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
-
 $about = AboutManager::GetAboutInformation();
 ?>
 <!doctype html>
@@ -16,18 +14,16 @@ $about = AboutManager::GetAboutInformation();
 
 <head>
     <title>Accueil</title>
-    <?php include "inc/header.php" ?> 
+    <?php include "inc/header.php" ?>
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-md-4 col-lg-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <h1>À propos de moi</h1>
-                <hr/>
+                <hr />
                 <table>
                     <tr>
                         <td>
@@ -60,23 +56,18 @@ $about = AboutManager::GetAboutInformation();
                         </td>
                     </tr>
                     <?php
-                    if ($isLogged == true) {
+                    if ($isLogged == true) :
                         ?>
                         <tr>
                             <td>
                                 <a class="btn btn-primary" href=<?= PAGE_ADMIN_ABOUT ?> role="button">Modifier</a>
                             </td>
                         </tr>
-                    <?php
-                }
-                ?>
+                    <?php endif; ?>
                 </table>
-
             </div>
         </div>
-        
     </div>
-
 </body>
 
 </html>

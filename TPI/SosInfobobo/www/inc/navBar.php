@@ -7,13 +7,11 @@
   Date: Mai 2019
  */
 
-//Test si l'utilisateur est connecté
 if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
     $isLogged = true;
 } else {
     $isLogged = false;
 }
-
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="img/INFOBOBO.png" width="100" height="54" alt="">
@@ -32,9 +30,7 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                 <a class="nav-link" href=<?= PAGE_OPINION ?>>Avis</a>
             </li>
             <li>
-                <?php
-                if ($isLogged == true) {
-                    ?>
+                <?php if ($isLogged == true) : ?>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fa fa-user"></span> Administration
@@ -46,14 +42,11 @@ if (isset($_SESSION["isLogged"]) == true && $_SESSION["isLogged"] == true) {
                             <a class="dropdown-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_ADMIN_STATISTIC)) ? "active" : ""; ?>" href=<?= PAGE_ADMIN_STATISTIC ?>>Statistique</a>
                         </div>
                     </div>
-                <?php
-            }
-            ?>
+                <?php endif; ?>
             </li>
             <li class="nav-item <?= (strpos($_SERVER['PHP_SELF'], PAGE_CONNECTION)) ? "active" : ""; ?>">
                 <?= ($isLogged == false) ? '<a class="nav-link" href="' . PAGE_CONNECTION . '"><span class="fas fa-sign-in-alt"></span> Connexion</a>' : '<a class="nav-link" href="disconnection.php"><span class="fas fa-sign-out-alt"></span> Deconnexion</a>'; ?>
             </li>
-
         </ul>
     </div>
 </nav>

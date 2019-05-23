@@ -1,8 +1,13 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
-
-//Test de récuparation d'un tableau remplit de tableau d'objet Request avec le statut "OUVERTE" .
-echo "Test de sélection de toute les demandes de statut 'OUVERTE' ";
+/*
+  Projet: SOS INFOBOBO
+  Description: Fichier de test de la fonction GetOpenRequest du manager RequestManager
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
+echo "Test de récupération de toutes les demandes de réparation informatique de type 'Ouverte' dans un tableau contenant des tableaux d'objet Client et Request.<br/>";
+echo "Résultat :<br/>";
 $arrRequest = RequestManager::GetOpenRequest();
 var_dump($arrRequest);
-echo "-<br>";

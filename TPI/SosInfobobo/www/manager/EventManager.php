@@ -23,7 +23,6 @@ class EventManager
     {
         $sql = "INSERT INTO `bj_tpi_bd`.`evenement` (`id_demande`, `date_debut`, `date_fin`, `id_reparateur`) 
                 VALUES (:id_request, :dateEventStart, :dateEventEnd, 1)";
-
         try {
             $pdo = Database::getInstance();
             $stmt = Database::prepare($sql);
@@ -54,7 +53,6 @@ class EventManager
                 FROM bj_tpi_bd.evenement as e,bj_tpi_bd.demandes as d,bj_tpi_bd.clients as c 
                 WHERE d.id_demande=e.id_demande and c.id_client = d.id_client";
         $arrAllEvent = array();
-
         try {
             $stmt = Database::prepare($sql);
             $stmt->execute();

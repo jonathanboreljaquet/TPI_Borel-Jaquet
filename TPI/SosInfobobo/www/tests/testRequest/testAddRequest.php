@@ -1,8 +1,16 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
-
-//Test transaction, création client puis création d'une demande
-echo "Test transaction, insert client puis insert demande.<br>";
-if (RequestManager::AddRequest("Ackermann", "Gawen", "gawen@gmail.com", "078 323 23 21", "Mon pc ne s'allume plus")) {
-    echo "L'insertion du client et de la demande à bien fonctionner";
+/*
+  Projet: SOS INFOBOBO
+  Description: Fichier de test de la fonction AddRequest du manager RequestManager
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
+echo "Test d'ajout d'une demande de réparation informatique dans la table 'evenement'.<br/>";
+echo "Résultat :<br/>";
+if (RequestManager::AddRequest("Borel", "Jonathan", "jonathan.brljq@eduge.ch", "077 421 39 90", "Mon ordinateur ne fonctionne plus, pouvez-vous m'aider ?")) {
+  echo "L'insert a bien fonctionné.";
+} else {
+  echo "L'insert n'a pas fonctionné.";
 }

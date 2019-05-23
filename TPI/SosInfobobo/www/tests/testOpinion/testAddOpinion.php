@@ -1,17 +1,16 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/www/inc/inc.all.php';
-
-//Test d'ajout d'opinion dans la base, texte simple.
-echo "Test d'insert réspecant les normes.<br>";
-if(OpinionManager::AddOpinion("Le service étais parfait, très satisfait")){
-    echo "l'insert c'est bien passé.<br>";
-}
-echo "-<br>";
-//Test d'ajout d'opinion dans la base, pas de texte.
-echo "Test d'insert réspecant pas les normes, formulaire pas remplis.<br>";
-if(OpinionManager::AddOpinion("")){
-    echo "l'insert c'est bien passé.<br>";
-}
-else{
-    echo "l'insert à pas fonctionné";
+/*
+  Projet: SOS INFOBOBO
+  Description: Fichier de test de la fonction AddOpinion du manager OpinionManager
+  Auteur: Borel-Jaquet Jonathan
+  Version: 1.0
+  Date: Mai 2019
+*/
+require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
+echo "Test d'ajout d'un avis dans la table 'avis'.<br/>";
+echo "Résultat :<br/>";
+if (OpinionManager::AddOpinion("Le service était parfait, très satisfait")) {
+  echo "L'insert a bien fonctionné.";
+} else {
+  echo "L'insert n'a pas fonctionné.";
 }

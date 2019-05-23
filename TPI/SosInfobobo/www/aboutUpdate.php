@@ -7,17 +7,13 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
-
 UserManager::VerificateRoleUser();
-
 if (isset($_POST["btnUpdateAbout"])) {
     if (!empty($_POST["newAboutPhoneNumber"]) && !empty($_POST["newAboutEmail"]) && !empty($_POST["newAboutPrice"]) && !empty($_POST["newAboutDescription"])) {
         $newPhoneNumber = filter_input(INPUT_POST, "newAboutPhoneNumber", FILTER_SANITIZE_STRING);
         $newEmail = filter_input(INPUT_POST, "newAboutEmail", FILTER_SANITIZE_STRING);
         $newPrice = filter_input(INPUT_POST, "newAboutPrice", FILTER_SANITIZE_STRING);
         $newDescription = filter_input(INPUT_POST, "newAboutDescription", FILTER_SANITIZE_STRING);
-
         if (AboutManager::UpdateAboutInformation($newPhoneNumber, $newEmail, $newPrice, $newDescription)) {
             StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Informations bien modifiées");
         } else {
@@ -38,15 +34,13 @@ $about = AboutManager::GetAboutInformation();
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-md-4 col-lg-4 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center">
                     <h1>Modification de mes informations</h1>
-                    <hr/>
+                    <hr />
                 </div>
                 <div class="row justify-content-center">
                     <form action="#" method="POST" class="w-100">
@@ -70,11 +64,9 @@ $about = AboutManager::GetAboutInformation();
                         <small id="emailHelp" class="form-text text-muted">Tous les champs sont obligatoires.</small>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

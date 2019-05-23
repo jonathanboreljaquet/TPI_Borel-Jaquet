@@ -61,4 +61,3 @@ class Client
 	 */
 	public $phoneNumber;
 }
-

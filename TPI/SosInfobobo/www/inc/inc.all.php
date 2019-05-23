@@ -63,23 +63,11 @@ const PAGE_ADMIN_CONTACT = "adminContact.php";
 const PAGE_ADMIN_STATISTIC = "adminStatistic.php";
 const PAGE_ADMIN_CALENDAR = "adminCalendar.php";
 
-//Destinataire et message de l'envoi d'email lors de la création d'une demande de réparation informatique
-const RECEIVER_MAIL_REQUEST_ADD = "infoboboTPI@gmail.com";
-const SUBJECT_MAIL_REQUEST_ADD = "[INFOBOBO.CH] Nouvelle demande de réparation";
-const MESSAGE_MAIL_REQUEST_ADD = "Une nouvelle demande de réparation informatique vient d'être envoyé, 
-                                  consulter l'administration du site <a href='infobobo.ch'>infobobo.ch</a> pour plus d'informations.";
-
-
-//Destinataire et message de l'envoi d'email lors du changement de statut d'une demande de réparation informatique
-const SUBJECT_MAIL_REQUEST_STATUS_UPDATE = "[INFOBOBO.CH] Réponse de la demande de réparation informatique";
-const MESSAGE_MAIL_REQUEST_STATUS_UPDATE = "Bonjour et merci d'avoir choisis Infobobo pour votre réparation informatique.
-                                            Le statut de votre demande de réparation informatique est passé à ";
-
 //Type d'alerte Bootstrap
 const ALERT_TYPE_SUCCESS = "success";
 const ALERT_TYPE_FAILED = "danger";
 
-//Tableau permettant la traduction BDD->Lisible des statuts de demande
+//Tableau permettant la traduction BDD->Lisible des statuts de demande de réparation infromatique
 $arrConstStatus = array(
     STATUS_OPEN => "Ouverte",
     STATUS_IN_PROGRESS => "En cours",
@@ -101,5 +89,3 @@ $arrMonth = array(
     11 => "Novembre",
     12 => "Décembre",
 );
-
-

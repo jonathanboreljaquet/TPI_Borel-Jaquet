@@ -7,7 +7,6 @@
   Date: Mai 2019
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SosInfobobo/www/inc/inc.all.php';
-
 UserManager::VerificateRoleUser();
 if (isset($_GET["saveEvent"])) {
     if (!empty($_GET["id_requestSelected"]) && !empty($_GET["eventDateStart"]) && !empty($_GET["eventDateEnd"])) {
@@ -16,14 +15,13 @@ if (isset($_GET["saveEvent"])) {
         $eventDateEnd = filter_input(INPUT_GET, "eventDateEnd", FILTER_SANITIZE_STRING);
         $arrRequestClientById = RequestManager::GetRequestById($id_request);
         if (EventManager::AddEvent($id_request, $eventDateStart, $eventDateEnd)) {
-            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS,"Rendez-vous créé");
-            MailerManager::SendMailToClient($arrConstStatus[STATUS_IN_PROGRESS], $arrRequestClientById[CLIENT],$arrRequestClientById[REQUEST]);
+            StyleManager::ShowAlert(ALERT_TYPE_SUCCESS, "Rendez-vous créé");
+            MailerManager::SendMailToClient($arrConstStatus[STATUS_IN_PROGRESS], $arrRequestClientById[CLIENT], $arrRequestClientById[REQUEST]);
         } else {
-            StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Problème lors de l'insertion du rendez-vous");
+            StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Problème lors de l'insertion du rendez-vous");
         }
-    }
-    else{
-        StyleManager::ShowAlert(ALERT_TYPE_FAILED,"Tous les éléments nécessaires n'ont pas été sélectionné");
+    } else {
+        StyleManager::ShowAlert(ALERT_TYPE_FAILED, "Tous les éléments nécessaires n'ont pas été sélectionné");
     }
 }
 $arrOpenRequest = RequestManager::GetOpenRequest();
@@ -32,7 +30,6 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
 <html lang="fr">
 
 <head>
-    <?php include "inc/header.php"; ?>
     <!-- Plugins css pour un affichage correct des différents plugins utilisés-->
     <link href='lib/fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet' />
     <link href='lib/fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet' />
@@ -46,20 +43,18 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
     <!-- Plugin pour séléctionner une date dans le calendrier et pour mettre le calendrier en francais -->
     <script src='lib/fullcalendar-4.1.0/packages/interaction/main.js'></script>
     <script src='lib/fullcalendar-4.1.0/packages/core/locales/fr-ch.js'></script>
-
     <title>Calendrier</title>
+    <?php include "inc/header.php"; ?>
 </head>
 
 <body>
-    <?php
-    include "inc/navBar.php";
-    ?>
+    <?php include "inc/navBar.php"; ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="section col-sm-10 col-lg-10 col-md-10 border justify-content-center border-primary rounded mt-4 p-4">
                 <div class="row justify-content-center mb-2">
                     <h4>Planification de rendez-vous</h4>
-                    <hr/>
+                    <hr />
                 </div>
                 <div class="row">
                     <div class="col-lg-7 col-md-12 col-sm-12">
@@ -95,21 +90,18 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
                                             <td><?= $request[CLIENT]->firstName ?></td>
                                             <td><?= $request[CLIENT]->secondName ?></td>
                                             <td> <textarea rows="5" class=" form-control" readonly><?= $request[REQUEST]->description ?></textarea></td>
-
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <?php endforeach; ?>
-
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
     <script>
+        //Fonction Javascript de sélection de la demande de réparation informatique 
         $(document).ready(function() {
             $(".tableRequest").click(function() {
                 $(".tableRequest").css("background-color", "#212529");
@@ -124,55 +116,34 @@ $arrOpenRequest = RequestManager::GetOpenRequest();
         });
     </script>
     <script>
-        //list d'evenement a afficher dans le calendrier (propriétés events)
+        //Liste d'événements en format JSON à afficher dans le calendrier (propriétés events)
         var data = <?= EventManager::GetAllEventFormatJSON() ?>
     </script>
 </body>
 <script>
-    //le script est a mettre en bas de la page comme ca le HTML est chargé
+    //Script de configuration et d'affichage FullCalendar
     var calendarEl = document.getElementById('calendar');
-
     var calendar = new FullCalendar.Calendar(calendarEl, {
         timezone: "local",
-        plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'], //ceux que j'ai link (CSS/JS)
-        header: { //le menu avec les différent boutons
+        plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
+        header: {
             left: 'dayGridMonth,dayGridWeek,timeGridDay,list',
             center: 'title',
             right: 'prevYear,prev,next,nextYear'
         },
-        themeSystem: 'bootstrap',
-        defaultView: 'dayGridMonth', //le type de calendrier a afficher au chargement 
-        selectable: true, // permet de chosir un jour
-        locale: 'fr-ch', // la langue
-        select: function(info) { // function a chaque click de date
+        defaultView: 'dayGridMonth',
+        selectable: true,
+        locale: 'fr-ch',
+        select: function(info) {
 
             document.getElementById("eventDateStart").value = info.startStr;
             document.getElementById("eventDateEnd").value = info.endStr;
         },
-
-
         events: data,
         eventColor: '#2C3E50',
-        eventTextColor : '#FFFFFF'
-        
-
+        eventTextColor: '#FFFFFF'
     });
     calendar.render();
 </script>
-<style>
-    #calendar {
-        background-color: #bfbfbf;
-        color: black;
-    }
-
-    .fc-highlight {
-        background-color: #595959;
-    }
-
-    .fc-unthemed td.fc-today {
-        background-color: grey;
-    }
-    
-</style>
 
 </html>

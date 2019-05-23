@@ -70,7 +70,6 @@ class RequestManager
                 $c->email = $requestClient["email"];
                 $c->phoneNumber = $requestClient["telephone"];
                 array_push($arrClientRequest, $c);
-
                 $r = new Request();
                 $r->id_request = intval($requestClient["id_demande"]);
                 $r->id_client = intval($requestClient["id_client"]);
@@ -106,19 +105,18 @@ class RequestManager
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $c = new Client();
-                $c->id_client = intval($result["id_client"]);
-                $c->firstName = $result["nom"];
-                $c->secondName = $result["prenom"];
-                $c->email = $result["email"];
-                $c->phoneNumber = $result["telephone"];
-                array_push($arrClientRequest, $c);
-
-                $r = new Request();
-                $r->id_request = intval($result["id_demande"]);
-                $r->id_client = intval($result["id_client"]);
-                $r->description = $result["description"];
-                $r->status = $result["statut"];
-                array_push($arrClientRequest, $r);
+            $c->id_client = intval($result["id_client"]);
+            $c->firstName = $result["nom"];
+            $c->secondName = $result["prenom"];
+            $c->email = $result["email"];
+            $c->phoneNumber = $result["telephone"];
+            array_push($arrClientRequest, $c);
+            $r = new Request();
+            $r->id_request = intval($result["id_demande"]);
+            $r->id_client = intval($result["id_client"]);
+            $r->description = $result["description"];
+            $r->status = $result["statut"];
+            array_push($arrClientRequest, $r);
             return $arrClientRequest;
         } catch (Exception $e) {
             return FALSE;
